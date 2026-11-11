@@ -1,0 +1,1104 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>每日吃瓜 yandex - 娱乐热榜与事件追踪</title>
+  <meta name="description" content="每日吃瓜 yandex 聚合娱乐热点、争议事件脉络、用户现场评论与相关资讯，追踪具体条目进展，适合关注内娱动态、短视频话题与网络热议的读者。">
+  <meta name="keywords" content="每日吃瓜 yandex">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23c53b2f'/><text y='68' x='50' text-anchor='middle' font-size='52' fill='%23fff' font-family='sans-serif'>瓜</text></svg>">
+  <style>
+    :root {
+      --primary: #c53b2f;
+      --primary-light: #f5e3e0;
+      --primary-dark: #9e2a20;
+      --bg: #faf8f5;
+      --panel: #ffffff;
+      --text: #1f1c19;
+      --text-secondary: #5d5751;
+      --text-muted: #8f877f;
+      --line: #e7e1da;
+      --radius-card: 14px;
+      --radius-btn: 8px;
+      --radius-tag: 999px;
+      --shadow: 0 1px 4px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+      --shadow-hover: 0 4px 16px rgba(0,0,0,0.08);
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 110px; }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 15px;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { display: block; max-width: 100%; height: auto; }
+    ul, ol { list-style: none; }
+    button { font-family: inherit; cursor: pointer; }
+    .skip-link {
+      position: absolute; top: -999px; left: 8px; background: var(--primary);
+      color: #fff; padding: 8px 16px; border-radius: var(--radius-btn); z-index: 999;
+    }
+    .skip-link:focus { top: 8px; }
+
+    /* 吸顶公告条 + 页头 */
+    .sticky-top {
+      position: sticky; top: 0; z-index: 50;
+      box-shadow: 0 1px 0 var(--line);
+    }
+    .announcement {
+      background: var(--primary-dark);
+      color: #f5e3e0;
+      font-size: 13px;
+      padding: 7px 0;
+      overflow: hidden;
+    }
+    .announcement .wrap {
+      max-width: 1320px; margin: 0 auto; padding: 0 20px;
+      display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px;
+    }
+    .announcement .brand-mini {
+      font-weight: 700; color: #fff; letter-spacing: 0.5px;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .announcement .brand-mini svg { width: 18px; height: 18px; }
+    .announcement .ann-item { display: inline-flex; gap: 6px; align-items: baseline; }
+    .announcement .ann-item time { color: #f0c9c3; font-weight: 500; white-space: nowrap; }
+    .announcement .ann-item span { color: #fff; }
+
+    .site-header {
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .site-header .wrap {
+      max-width: 1320px; margin: 0 auto; padding: 0 20px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      height: 58px;
+    }
+    .logo {
+      display: flex; align-items: center; gap: 10px;
+      font-weight: 800; font-size: 19px; color: var(--text);
+      flex-shrink: 0;
+    }
+    .logo:hover { text-decoration: none; }
+    .logo svg { width: 34px; height: 34px; flex-shrink: 0; }
+    .header-nav {
+      display: flex; gap: 4px; flex-wrap: wrap; align-items: center;
+    }
+    .header-nav a {
+      color: var(--text-secondary); font-size: 14px; font-weight: 500;
+      padding: 5px 10px; border-radius: var(--radius-btn);
+      transition: background 0.2s, color 0.2s;
+      white-space: nowrap;
+    }
+    .header-nav a:hover, .header-nav a:focus-visible {
+      background: var(--primary-light); color: var(--primary-dark); text-decoration: none;
+    }
+    .menu-toggle {
+      display: none; background: none; border: 1px solid var(--line);
+      border-radius: var(--radius-btn); padding: 4px 9px; font-size: 20px; line-height: 1;
+      color: var(--text);
+    }
+    .menu-toggle:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+    /* 主容器 */
+    .container {
+      max-width: 1320px; margin: 0 auto; padding: 0 20px;
+    }
+    .layout-3col {
+      display: grid;
+      grid-template-columns: 180px minmax(0,1fr) 250px;
+      gap: 28px;
+      align-items: start;
+      padding: 28px 0 48px;
+    }
+    .layout-3col > * { min-width: 0; }
+
+    /* 首屏 */
+    .hero {
+      background: linear-gradient(145deg, #fff5f2 0%, #faf8f5 60%, #f5ece7 100%);
+      border-radius: var(--radius-card);
+      padding: 36px 32px 32px;
+      margin-bottom: 28px;
+      border: 1px solid var(--line);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: "";
+      position: absolute; right: -40px; bottom: -60px;
+      width: 240px; height: 240px;
+      background: radial-gradient(circle, rgba(197,59,47,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero h1 {
+      font-size: 30px; font-weight: 800; letter-spacing: -0.5px;
+      margin-bottom: 12px; color: var(--text); position: relative; z-index: 1;
+    }
+    .hero p {
+      max-width: 680px; color: var(--text-secondary); font-size: 15px;
+      margin-bottom: 20px; position: relative; z-index: 1;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; position: relative; z-index: 1; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 9px 20px; border-radius: var(--radius-btn); font-size: 14px;
+      font-weight: 600; border: 1px solid transparent; transition: background 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+    }
+    .btn:hover { text-decoration: none; }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-primary:hover { background: var(--primary-dark); box-shadow: var(--shadow-hover); }
+    .btn-outline { background: transparent; border-color: var(--line); color: var(--text); }
+    .btn-outline:hover { background: var(--panel); box-shadow: var(--shadow); }
+
+    /* 左栏频道 */
+    .channel-nav {
+      background: var(--panel); border-radius: var(--radius-card);
+      padding: 18px 10px; box-shadow: var(--shadow);
+      position: sticky; top: 110px;
+    }
+    .channel-nav h2 {
+      font-size: 13px; font-weight: 700; color: var(--text-muted);
+      text-transform: uppercase; letter-spacing: 0.8px;
+      padding: 0 10px 10px; border-bottom: 1px solid var(--line); margin-bottom: 8px;
+    }
+    .channel-nav a {
+      display: block; padding: 7px 10px; border-radius: var(--radius-btn);
+      color: var(--text-secondary); font-size: 14px; font-weight: 500;
+      transition: background 0.15s, color 0.15s;
+    }
+    .channel-nav a:hover, .channel-nav a:focus-visible {
+      background: var(--primary-light); color: var(--primary-dark); text-decoration: none;
+    }
+    .channel-nav a.active {
+      background: var(--primary); color: #fff;
+    }
+
+    /* 主内容板块通用 */
+    .section {
+      margin-bottom: 36px;
+    }
+    .section-head {
+      display: flex; align-items: baseline; justify-content: space-between;
+      flex-wrap: wrap; gap: 8px; margin-bottom: 16px;
+    }
+    .section-head h2 {
+      font-size: 20px; font-weight: 700; letter-spacing: -0.2px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .section-head h2::before {
+      content: ""; display: inline-block; width: 4px; height: 18px;
+      background: var(--primary); border-radius: 2px;
+    }
+    .section-head .more {
+      font-size: 13px; color: var(--text-muted); font-weight: 500;
+    }
+    .section-head .more:hover { color: var(--primary); }
+
+    /* 概览 */
+    .overview {
+      background: var(--panel); border-radius: var(--radius-card);
+      padding: 22px 24px; box-shadow: var(--shadow);
+      font-size: 14.5px; color: var(--text-secondary);
+    }
+    .overview p + p { margin-top: 10px; }
+
+    /* 精选卡片 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .card {
+      background: var(--panel); border-radius: var(--radius-card);
+      box-shadow: var(--shadow); overflow: hidden;
+      display: flex; flex-direction: column;
+      transition: box-shadow 0.2s, transform 0.15s;
+    }
+    .card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+    .card img {
+      width: 100%; height: 140px; object-fit: cover;
+      background: var(--line);
+    }
+    .card-body { padding: 14px 16px 16px; display: flex; flex-direction: column; flex: 1; gap: 8px; }
+    .card-title {
+      font-size: 15px; font-weight: 700; line-height: 1.4;
+      color: var(--text);
+    }
+    .card-title a { color: inherit; }
+    .card-title a:hover { color: var(--primary); text-decoration: none; }
+    .card-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+    .tag {
+      font-size: 11px; padding: 2px 9px; border-radius: var(--radius-tag);
+      background: var(--primary-light); color: var(--primary-dark); font-weight: 500;
+    }
+    .card-desc {
+      font-size: 13px; color: var(--text-muted); line-height: 1.55;
+      flex: 1;
+    }
+    .card-meta {
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 12px; color: var(--text-muted); border-top: 1px solid var(--line);
+      padding-top: 8px; margin-top: 4px;
+    }
+    .card-meta .hot { color: var(--primary); font-weight: 600; }
+    .card-meta .rating { color: #b8860b; font-weight: 600; }
+
+    /* 最新动态 */
+    .update-list {
+      background: var(--panel); border-radius: var(--radius-card);
+      box-shadow: var(--shadow); overflow: hidden;
+    }
+    .update-item {
+      display: flex; gap: 14px; padding: 13px 20px;
+      border-bottom: 1px solid var(--line); align-items: flex-start;
+    }
+    .update-item:last-child { border-bottom: none; }
+    .update-time {
+      font-size: 12px; color: var(--text-muted); white-space: nowrap;
+      min-width: 52px; padding-top: 2px; font-variant-numeric: tabular-nums;
+    }
+    .update-content { flex: 1; }
+    .update-content strong { font-size: 14px; color: var(--text); display: block; margin-bottom: 2px; }
+    .update-content p { font-size: 13px; color: var(--text-secondary); }
+
+    /* 分类入口 */
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 10px;
+    }
+    .cat-item {
+      background: var(--panel); border-radius: var(--radius-btn);
+      padding: 12px 14px; text-align: center;
+      border: 1px solid var(--line); font-size: 14px; font-weight: 600;
+      color: var(--text-secondary);
+      transition: background 0.15s, border-color 0.15s, color 0.15s;
+      text-decoration: none;
+    }
+    .cat-item:hover {
+      background: var(--primary-light); border-color: var(--primary);
+      color: var(--primary-dark); text-decoration: none;
+    }
+
+    /* 深度解析 */
+    .deep-dive {
+      background: var(--panel); border-radius: var(--radius-card);
+      padding: 26px 28px; box-shadow: var(--shadow);
+      font-size: 14.5px; color: var(--text-secondary);
+    }
+    .deep-dive h3 {
+      font-size: 17px; font-weight: 700; color: var(--text);
+      margin: 22px 0 10px;
+    }
+    .deep-dive h3:first-child { margin-top: 0; }
+    .deep-dive p { margin-bottom: 10px; }
+    .deep-dive ul { margin: 8px 0 12px 20px; list-style: disc; }
+    .deep-dive li { margin-bottom: 5px; }
+    .deep-dive .callout {
+      background: var(--primary-light); border-left: 3px solid var(--primary);
+      padding: 12px 16px; border-radius: 0 var(--radius-btn) var(--radius-btn) 0;
+      margin: 14px 0; font-size: 14px; color: var(--text);
+    }
+
+    /* 指南 */
+    .guide {
+      background: var(--panel); border-radius: var(--radius-card);
+      padding: 22px 24px; box-shadow: var(--shadow);
+      font-size: 14.5px; color: var(--text-secondary);
+    }
+    .guide ol {
+      list-style: none; counter-reset: step;
+      display: flex; flex-direction: column; gap: 14px; margin-top: 12px;
+    }
+    .guide li {
+      display: flex; gap: 14px; align-items: flex-start;
+      counter-increment: step;
+    }
+    .guide li::before {
+      content: counter(step);
+      display: flex; align-items: center; justify-content: center;
+      width: 26px; height: 26px; flex-shrink: 0;
+      background: var(--primary); color: #fff;
+      border-radius: 50%; font-size: 13px; font-weight: 700;
+    }
+    .guide li strong { color: var(--text); }
+
+    /* FAQ */
+    .faq-list {
+      background: var(--panel); border-radius: var(--radius-card);
+      box-shadow: var(--shadow); overflow: hidden;
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--line);
+    }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-item summary {
+      padding: 14px 20px; font-weight: 600; font-size: 14.5px;
+      cursor: pointer; list-style: none;
+      display: flex; justify-content: space-between; align-items: center;
+      color: var(--text);
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: "＋"; font-size: 16px; color: var(--primary); font-weight: 400;
+      transition: transform 0.2s;
+    }
+    .faq-item[open] summary::after { content: "－"; }
+    .faq-item p {
+      padding: 0 20px 16px; font-size: 14px; color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* 评论 */
+    .comment-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 12px;
+    }
+    .comment-card {
+      background: var(--panel); border-radius: var(--radius-btn);
+      padding: 14px 16px; box-shadow: var(--shadow);
+      font-size: 13.5px; color: var(--text-secondary);
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .comment-user {
+      font-size: 12px; font-weight: 700; color: var(--primary-dark);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .comment-user .avatar {
+      width: 22px; height: 22px; border-radius: 50%;
+      background: var(--primary-light); color: var(--primary);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 700;
+    }
+    .comment-text { line-height: 1.6; }
+    .comment-text .mention { color: var(--primary); font-weight: 500; }
+
+    /* 资讯 */
+    .news-list {
+      background: var(--panel); border-radius: var(--radius-card);
+      box-shadow: var(--shadow); overflow: hidden;
+    }
+    .news-item {
+      padding: 16px 20px; border-bottom: 1px solid var(--line);
+      display: flex; flex-direction: column; gap: 4px;
+    }
+    .news-item:last-child { border-bottom: none; }
+    .news-item h3 { font-size: 15px; font-weight: 700; }
+    .news-item h3 a { color: var(--text); }
+    .news-item h3 a:hover { color: var(--primary); text-decoration: none; }
+    .news-meta { font-size: 12px; color: var(--text-muted); }
+    .news-item p { font-size: 13.5px; color: var(--text-secondary); }
+
+    /* 相关推荐 */
+    .reco-tags {
+      display: flex; flex-wrap: wrap; gap: 8px;
+    }
+    .reco-tags a {
+      background: var(--panel); border: 1px solid var(--line);
+      padding: 6px 14px; border-radius: var(--radius-tag);
+      font-size: 13px; color: var(--text-secondary); font-weight: 500;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .reco-tags a:hover {
+      background: var(--primary-light); border-color: var(--primary);
+      color: var(--primary-dark); text-decoration: none;
+    }
+
+    /* 榜单 */
+    .rank-list {
+      background: var(--panel); border-radius: var(--radius-card);
+      box-shadow: var(--shadow); padding: 8px 0;
+    }
+    .rank-item {
+      display: flex; align-items: center; gap: 12px;
+      padding: 10px 18px; font-size: 14px;
+    }
+    .rank-num {
+      font-weight: 800; font-size: 15px; color: var(--text-muted);
+      width: 22px; text-align: center; font-variant-numeric: tabular-nums;
+    }
+    .rank-item:nth-child(1) .rank-num { color: #e6a817; }
+    .rank-item:nth-child(2) .rank-num { color: #a8a8a8; }
+    .rank-item:nth-child(3) .rank-num { color: #cd7f32; }
+    .rank-item .rank-title { flex: 1; font-weight: 500; }
+    .rank-item .rank-hot { font-size: 12px; color: var(--text-muted); }
+
+    /* 侧栏 */
+    .aside-widget {
+      background: var(--panel); border-radius: var(--radius-card);
+      box-shadow: var(--shadow); padding: 18px 16px;
+      margin-bottom: 18px;
+    }
+    .aside-widget h3 {
+      font-size: 14px; font-weight: 700; margin-bottom: 12px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .aside-widget h3::before {
+      content: ""; width: 3px; height: 14px; background: var(--primary);
+      border-radius: 2px; display: inline-block;
+    }
+    .mini-list li {
+      padding: 6px 0; border-bottom: 1px dashed var(--line);
+      font-size: 13px;
+    }
+    .mini-list li:last-child { border-bottom: none; }
+    .mini-list a { color: var(--text-secondary); }
+    .mini-list a:hover { color: var(--primary); }
+    .mini-list .mini-date { font-size: 11px; color: var(--text-muted); margin-left: 4px; }
+
+    /* 页脚 */
+    .site-footer {
+      background: #2d2824; color: #d9d2cb; padding: 36px 0 28px;
+      font-size: 13px;
+    }
+    .site-footer .wrap {
+      max-width: 1320px; margin: 0 auto; padding: 0 20px;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 28px;
+    }
+    .footer-brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 17px; color: #fff; margin-bottom: 10px; }
+    .footer-brand svg { width: 28px; height: 28px; }
+    .footer-desc { color: #a89f97; font-size: 13px; line-height: 1.6; max-width: 320px; }
+    .footer-col h4 { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+    .footer-col a { display: block; color: #a89f97; padding: 3px 0; }
+    .footer-col a:hover { color: #fff; }
+    .footer-bottom {
+      max-width: 1320px; margin: 24px auto 0; padding: 16px 20px 0;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: #8f877f; font-size: 12px;
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+    }
+
+    /* 回到顶部 */
+    .back-to-top {
+      position: fixed; bottom: 24px; right: 24px;
+      width: 42px; height: 42px; border-radius: 50%;
+      background: var(--primary); color: #fff; border: none;
+      font-size: 20px; line-height: 1;
+      box-shadow: var(--shadow-hover);
+      display: none; align-items: center; justify-content: center;
+      z-index: 60; transition: background 0.2s;
+    }
+    .back-to-top.show { display: flex; }
+    .back-to-top:hover { background: var(--primary-dark); }
+    .back-to-top:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
+
+    /* 响应式 */
+    @media (max-width: 1024px) {
+      .layout-3col { grid-template-columns: 1fr 240px; }
+      .channel-nav { display: none; }
+      .header-nav { display: none; }
+      .menu-toggle { display: inline-flex; }
+      .mobile-nav-open .header-nav {
+        display: flex; position: absolute; top: 100%; left: 0; right: 0;
+        background: var(--panel); padding: 12px 20px; box-shadow: var(--shadow-hover);
+        flex-direction: column; gap: 2px; border-bottom: 1px solid var(--line);
+        z-index: 60;
+      }
+      .mobile-nav-open .header-nav a { padding: 9px 10px; }
+      .site-footer .wrap { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 740px) {
+      .layout-3col { grid-template-columns: 1fr; padding-top: 18px; }
+      .hero { padding: 24px 20px; }
+      .hero h1 { font-size: 24px; }
+      .site-header .wrap { height: 52px; }
+      .logo { font-size: 16px; }
+      .logo svg { width: 28px; height: 28px; }
+      .card-grid { grid-template-columns: 1fr; }
+      .cat-grid { grid-template-columns: repeat(2, 1fr); }
+      .comment-grid { grid-template-columns: 1fr; }
+      .site-footer .wrap { grid-template-columns: 1fr; gap: 20px; }
+      .back-to-top { bottom: 16px; right: 16px; width: 38px; height: 38px; }
+      .update-item { flex-direction: column; gap: 4px; }
+      .update-time { min-width: auto; }
+      .deep-dive { padding: 18px 16px; }
+      .overview { padding: 16px; }
+      .announcement .wrap { font-size: 12px; gap: 4px 12px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+    }
+  </style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main-content">跳转到主要内容</a>
+
+<div class="sticky-top" id="stickyTop">
+  <div class="announcement">
+    <div class="wrap">
+      <span class="brand-mini">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#f5e3e0"/><path d="M8 13c1.5 2 5.5 2 7 0" stroke="#9e2a20" stroke-width="1.5" stroke-linecap="round"/><circle cx="9" cy="9.5" r="1.2" fill="#9e2a20"/><circle cx="15" cy="9.5" r="1.2" fill="#9e2a20"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2" stroke="#9e2a20" stroke-width="1.2" stroke-linecap="round"/></svg>
+        每日吃瓜 yandex
+      </span>
+      <span class="ann-item"><time datetime="2026-11-08">11月8日</time><span>《小巷人家2》片场路透引发番位讨论</span></span>
+      <span class="ann-item"><time datetime="2026-11-07">11月7日</time><span>“阿那亚戏剧节”志愿者名单更新 327 人</span></span>
+    </div>
+  </div>
+  <header class="site-header" id="siteHeader">
+    <div class="wrap">
+      <a class="logo" href="/#top" aria-label="每日吃瓜 yandex 首页">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#c53b2f"/><text x="20" y="27" text-anchor="middle" font-size="20" fill="#fff" font-family="sans-serif" font-weight="700">瓜</text></svg>
+        <span>每日吃瓜 yandex</span>
+      </a>
+      <nav class="header-nav" id="headerNav" aria-label="站内导航">
+        <a href="/#hot-now">热榜</a>
+        <a href="/#latest-updates">最新</a>
+        <a href="/#category">分类</a>
+        <a href="/#deep-dive">深度</a>
+        <a href="/#faq">问答</a>
+        <a href="/#comments">评论</a>
+        <a href="/#news">资讯</a>
+        <a href="/#submit">投稿</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="打开导航菜单" aria-expanded="false" aria-controls="headerNav">☰</button>
+    </div>
+  </header>
+</div>
+
+<div class="container" id="top">
+  <div class="layout-3col">
+    <!-- 左栏频道 -->
+    <aside class="channel-nav" aria-label="频道索引">
+      <h2>频道</h2>
+      <a href="/#hot-now" class="active">热榜</a>
+      <a href="/#latest-updates">最新动态</a>
+      <a href="/#category">分类</a>
+      <a href="/#deep-dive">深度解析</a>
+      <a href="/#guide">体验指南</a>
+      <a href="/#faq">常见问答</a>
+      <a href="/#comments">用户评论</a>
+      <a href="/#news">相关资讯</a>
+      <a href="/#reco">相关推荐</a>
+      <a href="/#rank">热门榜单</a>
+      <a href="/#submit">投稿互动</a>
+    </aside>
+
+    <!-- 主内容 -->
+    <main id="main-content">
+      <!-- 首屏 -->
+      <section class="hero" aria-labelledby="hero-title">
+        <h1 id="hero-title">每日吃瓜 yandex</h1>
+        <p>汇集内娱剧组动态、综艺录制进程、短视频话题争议与用户现场评论。从片场路透到番位讨论，从平台排播到观众反馈，按具体条目追踪每一步进展。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="/#hot-now">看热榜条目</a>
+          <a class="btn btn-outline" href="/#latest-updates">最新更新</a>
+          <a class="btn btn-outline" href="/#submit">投稿爆料</a>
+        </div>
+      </section>
+
+      <!-- 1. 主题领域概览 -->
+      <section class="section" id="overview" aria-labelledby="overview-title">
+        <div class="section-head">
+          <h2 id="overview-title">内娱吃瓜现场全景</h2>
+        </div>
+        <div class="overview">
+          <p>吃瓜的核心对象集中在几个方向：剧集片场路透与番位排序、综艺录制名单与剪辑争议、短视频平台达人互撕与品牌解约、选秀与音乐节阵容变动、经纪公司声明与粉丝控评。2026年11月上旬，最受关注的是《小巷人家2》片场路透引发的演员排序讨论，豆瓣小组单日新增帖超过2400条。</p>
+          <p>短剧赛道同样热闹。抖音短剧《闪婚后大叔每天狂宠我》连续三周占据DataEye短剧热力榜第一，但关于剧情融梗的讨论从10月底持续至今。综艺方面，《花儿与少年·好友季》冰岛站录制期间，站姐拍到的那英与张晚意因行程安排产生分歧的片段，在微博视频号播放量破1800万。</p>
+          <p>品牌与达人关系也在翻篇。美妆博主“阿沁”10月30日宣布与花西子解约，后续直播中提及“分成条款调整”的片段被切片传播，小红书相关笔记超过5600篇。音乐节方面，阿那亚戏剧节11月7日更新志愿者名单，327人入选，比去年多出41个名额。</p>
+        </div>
+      </section>
+
+      <!-- 2. 精选内容推荐 -->
+      <section class="section" id="hot-now" aria-labelledby="hot-title">
+        <div class="section-head">
+          <h2 id="hot-title">精选条目推荐</h2>
+          <a class="more" href="/#rank">查看完整榜单 →</a>
+        </div>
+        <div class="card-grid">
+          <article class="card">
+            <img src="https://picsum.photos/seed/xiaoxiang2/400/300" alt="《小巷人家2》片场路透，演员在弄堂布景前候场" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title"><a href="/#hot-now">《小巷人家2》片场路透：蒋欣与关晓彤对手戏排序引讨论</a></h3>
+              <div class="card-tags"><span class="tag">剧集</span><span class="tag">番位</span><span class="tag">路透</span></div>
+              <p class="card-desc">11月5日流出的通告单显示蒋欣角色排在关晓彤前，豆瓣小组当天新增讨论帖670条，制作方尚未回应。</p>
+              <div class="card-meta"><span class="hot">热度 98.2万</span><span class="rating">豆瓣 7.8</span></div>
+            </div>
+          </article>
+          <article class="card">
+            <img src="https://picsum.photos/seed/huayushao/400/300" alt="《花儿与少年·好友季》录制现场，嘉宾在冰岛户外行走" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title"><a href="/#hot-now">《花儿与少年·好友季》冰岛站：那英与张晚意行程分歧片段</a></h3>
+              <div class="card-tags"><span class="tag">综艺</span><span class="tag">芒果TV</span><span class="tag">录制争议</span></div>
+              <p class="card-desc">站姐11月3日发布的视频显示两人在车辆调度上意见不合，微博切片播放量1800万，节目组暂未剪入正片。</p>
+              <div class="card-meta"><span class="hot">热度 76.4万</span><span class="rating">猫眼 8.1</span></div>
+            </div>
+          </article>
+          <article class="card">
+            <img src="https://picsum.photos/seed/aqin/400/300" alt="美妆博主阿沁在直播中展示产品" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title"><a href="/#hot-now">阿沁与花西子解约：分成条款调整的后续直播切片</a></h3>
+              <div class="card-tags"><span class="tag">达人</span><span class="tag">品牌解约</span><span class="tag">直播</span></div>
+              <p class="card-desc">10月30日官宣解约后，阿沁在11月2日直播中提及“保底比例从35%降到18%”，小红书相关笔记5600篇。</p>
+              <div class="card-meta"><span class="hot">热度 62.1万</span><span class="rating">小红书 4.2万赞</span></div>
+            </div>
+          </article>
+          <article class="card">
+            <img src="https://picsum.photos/seed/shanhun/400/300" alt="短剧《闪婚后大叔每天狂宠我》封面截图" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title"><a href="/#hot-now">短剧《闪婚后大叔每天狂宠我》三周连冠与融梗争议</a></h3>
+              <div class="card-tags"><span class="tag">短剧</span><span class="tag">抖音</span><span class="tag">融梗</span></div>
+              <p class="card-desc">DataEye热力榜连续三周第一，但观众指出第14集台词与2024年《顾少的隐婚罪妻》高度相似，制作方未回应。</p>
+              <div class="card-meta"><span class="hot">热度 91.7万</span><span class="rating">DataEye 9.1</span></div>
+            </div>
+          </article>
+          <article class="card">
+            <img src="https://picsum.photos/seed/aranya/400/300" alt="阿那亚戏剧节海边剧场外观" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title"><a href="/#hot-now">阿那亚戏剧节志愿者名单更新：327人入选，新增41席</a></h3>
+              <div class="card-tags"><span class="tag">戏剧节</span><span class="tag">志愿者</span><span class="tag">阿那亚</span></div>
+              <p class="card-desc">11月7日官方公众号发布名单，比2025年多41个名额，其中“剧目接待”组扩招20人，报名人数超6800。</p>
+              <div class="card-meta"><span class="hot">热度 34.8万</span><span class="rating">官方公示</span></div>
+            </div>
+          </article>
+          <article class="card">
+            <img src="https://picsum.photos/seed/yanchanghui/400/300" alt="音乐节舞台灯光与观众人群" width="400" height="300" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title"><a href="/#hot-now">草莓音乐节2026广州站阵容公布：万能青年旅店压轴</a></h3>
+              <div class="card-tags"><span class="tag">音乐节</span><span class="tag">阵容</span><span class="tag">广州</span></div>
+              <p class="card-desc">11月6日摩登天空公布首批阵容，万能青年旅店、陈粒、二手玫瑰在列，早鸟票3分钟售罄，黄牛价翻倍。</p>
+              <div class="card-meta"><span class="hot">热度 55.3万</span><span class="rating">大麦 9.4</span></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 3. 最新更新 -->
+      <section class="section" id="latest-updates" aria-labelledby="latest-title">
+        <div class="section-head">
+          <h2 id="latest-title">最新动态速递</h2>
+        </div>
+        <div class="update-list">
+          <div class="update-item"><span class="update-time">今天 09:42</span><div class="update-content"><strong>《小巷人家2》剧组发布第二版通告单</strong><p>11月8日新版通告单中蒋欣与关晓彤排序互换，豆瓣小组10分钟内新增120条讨论帖。</p></div></div>
+          <div class="update-item"><span class="update-time">今天 08:15</span><div class="update-content"><strong>那英工作室发布冰岛行程说明</strong><p>声明称“车辆调度由节目组统一安排，艺人配合调整”，未直接回应分歧片段，微博转发2.3万。</p></div></div>
+          <div class="update-item"><span class="update-time">昨天 22:07</span><div class="update-content"><strong>阿沁小红书粉丝一夜掉1.8万</strong><p>解约事件后粉丝数从428万降至426.2万，评论区出现“取关”刷屏，点赞最高评论3.2万。</p></div></div>
+          <div class="update-item"><span class="update-time">昨天 18:30</span><div class="update-content"><strong>《闪婚后大叔》制作方注册“闪婚大叔”商标</strong><p>天眼查显示11月7日申请注册第41类商标，涉及视频制作，与融梗争议时间接近。</p></div></div>
+          <div class="update-item"><span class="update-time">11月7日 15:20</span><div class="update-content"><strong>阿那亚戏剧节新增“剧目接待”组20个名额</strong><p>官方公众号解释称因今年新增3个剧场，接待岗位需求增加，报名截止延至11月10日。</p></div></div>
+          <div class="update-item"><span class="update-time">11月7日 11:05</span><div class="update-content"><strong>草莓音乐节广州站早鸟票3分钟售罄</strong><p>大麦网显示同时在线抢票人数超42万，二手平台出现加价600元的转卖帖。</p></div></div>
+          <div class="update-item"><span class="update-time">11月6日 20:48</span><div class="update-content"><strong>《花儿与少年》导演组发声明称“剪辑尊重事实”</strong><p>回应近期片段争议，表示正片将呈现完整沟通记录，未提及具体嘉宾台词。</p></div></div>
+          <div class="update-item"><span class="update-time">11月6日 14:12</span><div class="update-content"><strong>关晓彤后援会发布“专注作品”倡议书</strong><p>呼吁粉丝不参与番位讨论，微博点赞9.7万，评论区仍有大量排序截图。</p></div></div>
+          <div class="update-item"><span class="update-time">11月5日 19:35</span><div class="update-content"><strong>DataEye短剧热力榜第45周周榜发布</strong><p>《闪婚后大叔每天狂宠我》以9.1热力值连续第三周第一，第二名《厉总夫人又跑了》7.8。</p></div></div>
+          <div class="update-item"><span class="update-time">11月5日 10:02</span><div class="update-content"><strong>阿那亚戏剧节志愿者报名人数超6800</strong><p>官方报名系统显示有效简历6803份，录取比约20.8:1，竞争最激烈的是“剧目接待”组。</p></div></div>
+        </div>
+      </section>
+
+      <!-- 4. 分类入口 -->
+      <section class="section" id="category" aria-labelledby="cat-title">
+        <div class="section-head">
+          <h2 id="cat-title">按类别找瓜</h2>
+        </div>
+        <div class="cat-grid">
+          <a class="cat-item" href="/#hot-now">剧集番位</a>
+          <a class="cat-item" href="/#hot-now">综艺录制</a>
+          <a class="cat-item" href="/#hot-now">短剧融梗</a>
+          <a class="cat-item" href="/#hot-now">达人解约</a>
+          <a class="cat-item" href="/#hot-now">音乐节阵容</a>
+          <a class="cat-item" href="/#hot-now">戏剧节志愿者</a>
+          <a class="cat-item" href="/#comments">站姐路透</a>
+          <a class="cat-item" href="/#news">品牌声明</a>
+        </div>
+      </section>
+
+      <!-- 5. 深度解析 -->
+      <section class="section" id="deep-dive" aria-labelledby="deep-title">
+        <div class="section-head">
+          <h2 id="deep-title">番位、剪辑与融梗：三个争议现场的结构拆解</h2>
+        </div>
+        <div class="deep-dive">
+          <h3>番位争论不看“谁名字在前”，看合同附件里的排序条款</h3>
+          <p>《小巷人家2》11月5日流出的通告单把蒋欣排在关晓彤之前，豆瓣小组当天炸到670条新帖。但通告单只是剧组内部排班文件，演员合同附件中的“署名顺序”条款才是法律依据。2025年播出的《都市守望者》也出现过类似情况：片尾字幕按姓氏笔画排序，但宣传物料按合同排序，两者并不矛盾。</p>
+          <p>可核对的判断依据有三项：第一，片头/片尾字幕的演员表顺序；第二，官方海报上的名字排布；第三，合同附件是否约定“排名不分先后”。目前《小巷人家2》只流出了通告单，前两项均未发布。关晓彤后援会11月6日倡议“专注作品”，说明粉丝侧也拿不到合同信息。</p>
+          <div class="callout">番位争议的可信度分层：官方字幕（尚未发布）＞合同附件（未公开）＞通告单（已流出）＞站姐口述（有视频但无上下文）。通告单只能证明当天排班，不能推导最终署名顺序。</div>
+
+          <h3>综艺剪辑争议的焦点不在“剪掉了什么”，在“保留了什么顺序”</h3>
+          <p>《花儿与少年·好友季》冰岛站那段视频，站姐拍到了那英和张晚意在车辆调度上的对话。节目组11月6日声明称“正片将呈现完整沟通记录”，但争议核心是剪辑顺序：先放谁的表情、后放谁的解释，会改变观众对责任的判断。</p>
+          <p>对比2024年《五十公里桃花坞》的类似争议，当时节目组放出了未剪辑版片段作为回应，时长47分钟，放到腾讯视频后争议迅速降温。这次《花少》导演组没有说是否放出未剪辑版，只说“尊重事实”。两者的处理差异是明确的：一个提供了可查证素材，另一个只提供了态度声明。</p>
+          <ul>
+            <li>已公开事实：站姐视频时长1分23秒，车辆调度分歧确实存在。</li>
+            <li>当事人回应：那英工作室称“配合节目组安排”，张晚意方未单独发声。</li>
+            <li>媒体转述：微博娱乐号“圈内老鬼”称“正片剪掉了后续和解部分”，未提供截图。</li>
+            <li>网友推测：豆瓣小组有帖子称“节目组故意制造冲突”，无内部信源。</li>
+          </ul>
+
+          <h3>短剧融梗的判断标准：连续三句台词结构相同才算“实质性相似”</h3>
+          <p>《闪婚后大叔每天狂宠我》第14集被指与2024年《顾少的隐婚罪妻》高度相似。网友整理出的对比图显示，两段台词都是“你凭什么管我—我是你合法丈夫—合法又怎样”的三句结构。判断是否构成融梗，业内通常看连续台词的结构重合度，而非单个词汇。</p>
+          <p>2025年《我在八零年代当后妈》也曾被指融梗，当时制作方放出了剧本创作时间线，证明早于被指抄袭的作品。这次《闪婚》制作方没有放出剧本时间线，而是在11月7日申请注册“闪婚大叔”商标。商标注册与融梗争议之间没有必然关系，但时间点重合让讨论进一步升温——DataEye热力榜上该剧仍排第一，热力值9.1，说明争议没有影响播放量。</p>
+        </div>
+      </section>
+
+      <!-- 6. 体验指南 -->
+      <section class="section" id="guide" aria-labelledby="guide-title">
+        <div class="section-head">
+          <h2 id="guide-title">吃瓜顺序与判断路径</h2>
+        </div>
+        <div class="guide">
+          <p>瓜太多的时候，先看哪条、后看哪条，有一套实际的判断顺序。</p>
+          <ol>
+            <li><strong>先看官方物料。</strong>剧集番位看片尾字幕和官方海报，综艺争议看节目组声明和正片。这些是唯一可公开查证的依据，通告单、站姐视频只能作辅助。</li>
+            <li><strong>再查时间线。</strong>短剧融梗对比要看剧本创作时间和上线时间，品牌解约要看官宣日期和合同到期日。《闪婚后大叔》的剧本时间线至今未公开，这是判断的卡点。</li>
+            <li><strong>然后分辨信息层级。</strong>当事人声明、媒体转述、网友推测要分开看。那英工作室的声明属于当事人回应，微博娱乐号的“和解被剪”属于媒体转述，豆瓣帖子的“故意制造冲突”属于网友推测。</li>
+            <li><strong>最后看数据。</strong>热度、播放量、粉丝增减是结果指标，不是原因指标。阿沁掉粉1.8万说明解约事件有传播力，但不能反推解约本身是否合理。</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- 7. FAQ -->
+      <section class="section" id="faq" aria-labelledby="faq-title">
+        <div class="section-head">
+          <h2 id="faq-title">吃瓜常见问答</h2>
+        </div>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>《小巷人家2》蒋欣和关晓彤到底谁是一番？</summary>
+            <p>目前没有官方答案。片尾字幕和官方海报均未发布，唯一流出的是11月5日通告单，上面蒋欣排在关晓彤前。通告单只是当天排班文件，不能作为番位依据。2025年《都市守望者》也出现过通告单顺序与片尾字幕不一致的情况。</p>
+          </details>
+          <details class="faq-item">
+            <summary>《花儿与少年·好友季》冰岛站那段视频是真的吗？</summary>
+            <p>站姐视频拍到的车辆调度分歧确实存在，时长1分23秒。那英工作室11月8日声明称“配合节目组统一安排”，未否认分歧本身。节目组11月6日声明称正片将呈现完整沟通记录，但未说明是否放出未剪辑版。</p>
+          </details>
+          <details class="faq-item">
+            <summary>短剧《闪婚后大叔每天狂宠我》算融梗吗？</summary>
+            <p>网友对比图显示第14集有三句台词结构与2024年《顾少的隐婚罪妻》相同。判断融梗通常看连续台词的结构重合度，而非单个词汇。制作方未放出剧本创作时间线，目前无法确认谁先谁后。DataEye热力榜上该剧仍以9.1热力值排第一。</p>
+          </details>
+          <details class="faq-item">
+            <summary>阿沁和花西子解约，分成条款到底改了什么？</summary>
+            <p>阿沁在11月2日直播中提到“保底比例从35%降到18%”，但没有展示合同原文。花西子方面未发布声明。小红书相关笔记5600篇，讨论集中在品牌与达人分成模式的变化，不是单次解约本身。</p>
+          </details>
+          <details class="faq-item">
+            <summary>阿那亚戏剧节志愿者报名还有机会吗？</summary>
+            <p>报名截止延至11月10日。11月7日官方更新名单显示327人入选，比2025年多41个名额，“剧目接待”组扩招20人。有效简历6803份，录取比约20.8:1。想报名的人还可以在截止前提交。</p>
+          </details>
+          <details class="faq-item">
+            <summary>草莓音乐节广州站早鸟票没抢到，后面还有票吗？</summary>
+            <p>早鸟票11月6日3分钟售罄，大麦网显示同时在线抢票人数超42万。按摩登天空往年节奏，正式开票通常在阵容公布后两周左右，具体日期未公布。二手平台已出现加价600元的转卖帖。</p>
+          </details>
+        </div>
+      </section>
+
+      <!-- 8. 用户评论 -->
+      <section class="section" id="comments" aria-labelledby="comments-title">
+        <div class="section-head">
+          <h2 id="comments-title">现场评论</h2>
+        </div>
+        <div class="comment-grid">
+          <div class="comment-card"><div class="comment-user"><span class="avatar">瓜</span>@东四十条</div><p class="comment-text">通告单排序互换这事，第二版出来更乱了。到底按哪个版本算？</p></div>
+          <div class="comment-card"><div class="comment-user"><span class="avatar">吃</span>@小满不慌</div><p class="comment-text">那英那段视频看了，就是商量车怎么坐，没觉得有多大事。剪辑一放大就变味了。</p></div>
+          <div class="comment-card"><div class="comment-user"><span class="avatar">瓜</span>@阿沁前粉丝</div><p class="comment-text">从35%到18%，这降幅换谁都得走。不过直播里说合同细节是不是有点过，毕竟签了保密协议吧。</p></div>
+          <div class="comment-card"><div class="comment-user"><span class="avatar">吃</span>@短剧观察员</div><p class="comment-text">《闪婚》第14集那三句台词我对比过，确实结构一模一样。但短剧行业这种事太多了，最后基本没下文。</p></div>
+          <div class="comment-card"><div class="comment-user"><span class="avatar">瓜</span>@海边戏剧节</div><p class="comment-text">阿那亚志愿者去年没选上，今年扩招20个名额又报了，希望这次能中。</p></div>
+          <div class="comment-card"><div class="comment-user"><span class="avatar">吃</span>@草莓不甜</div><p class="comment-text">抢到早鸟票了！万能青年旅店压轴，广州见。</p></div>
+          <div class="comment-card"><div class="comment-user"><span class="avatar">瓜</span>@圈地自萌</div><p class="comment-text">关晓彤后援会那个倡议书挺拉好感的，但评论区还是有人在刷番位截图，倡议了等于没倡议。</p></div>
+          <div class="comment-card"><div class="comment-user"><span class="avatar">吃</span>@路人甲乙丙</div><p class="comment-text">今天热搜前十有六个是吃瓜相关，这比例有点离谱。</p></div>
+          <div class="comment-card"><div class="comment-user"><span class="avatar">瓜</span>@数据控</div><p class="comment-text">DataEye那个热力值9.1到底怎么算的？播放量、完播率、互动量加权？有懂行的解释下。</p></div>
+          <div class="comment-card"><div class="comment-user"><span class="avatar">吃</span>@冰岛没有极光</div><p class="comment-text">花少这季剪辑确实碎，上一秒还在吃饭下一秒就在吵架，中间全剪没了。</p></div>
+          <div class="comment-card"><div class="comment-user"><span class="avatar">瓜</span>@商标狂人</div><p class="comment-text">《闪婚》制作方11月7日申请商标，正好是争议最凶的时候，这时间点太巧了。不过商标注册和融梗确实是两码事。</p></div>
+          <div class="comment-card"><div class="comment-user"><span class="avatar">吃</span>@今天吃什么</div><p class="comment-text">关晓彤和蒋欣那部剧我本来挺期待的，现在满屏都是番位讨论，正片啥时候播都忘了。</p></div>
+          <div class="comment-card"><div class="comment-user"><span class="avatar">瓜</span>@音乐节特种兵</div><p class="comment-text">草莓广州站黄牛加600，真敢要。大麦不是实名制吗，转卖怎么操作的？</p></div>
+          <div class="comment-card"><div class="comment-user"><span class="avatar">吃</span>@安静吃瓜</div><p class="comment-text">这一周的瓜有点密集，番位、剪辑、融梗、解约、志愿者名单，一天一个节奏。</p></div>
+        </div>
+      </section>
+
+      <!-- 9. 相关资讯 -->
+      <section class="section" id="news" aria-labelledby="news-title">
+        <div class="section-head">
+          <h2 id="news-title">相关资讯</h2>
+        </div>
+        <div class="news-list">
+          <div class="news-item">
+            <h3><a href="/#news">《小巷人家2》第二版通告单流出，排序与第一版相反</a></h3>
+            <p class="news-meta">2026-11-08 · 豆瓣小组</p>
+            <p>新版通告单显示关晓彤排在蒋欣之前，距第一版流出仅三天。剧组未做公开说明。</p>
+          </div>
+          <div class="news-item">
+            <h3><a href="/#news">那英工作室就冰岛行程发声明：配合节目组统一安排</a></h3>
+            <p class="news-meta">2026-11-08 · 微博</p>
+            <p>声明全文112字，未提及具体嘉宾，微博转发2.3万，评论区关闭。</p>
+          </div>
+          <div class="news-item">
+            <h3><a href="/#news">阿沁粉丝数降至426.2万，三天累计掉粉1.8万</a></h3>
+            <p class="news-meta">2026-11-07 · 小红书</p>
+            <p>解约官宣后首次公开数据，掉粉集中在10月31日至11月2日，11月7日单日掉粉2100。</p>
+          </div>
+          <div class="news-item">
+            <h3><a href="/#news">《闪婚后大叔》制作方申请注册“闪婚大叔”商标</a></h3>
+            <p class="news-meta">2026-11-07 · 天眼查</p>
+            <p>申请类别为第41类（视频制作），申请人为东阳某影视公司，与融梗争议时间重合。</p>
+          </div>
+          <div class="news-item">
+            <h3><a href="/#news">阿那亚戏剧节志愿者报名截止延至11月10日</a></h3>
+            <p class="news-meta">2026-11-07 · 官方公众号</p>
+            <p>因新增3个剧场，剧目接待组扩招20人，有效简历6803份，录取比20.8:1。</p>
+          </div>
+          <div class="news-item">
+            <h3><a href="/#news">草莓音乐节广州站早鸟票售罄，同时在线抢票42万人</a></h3>
+            <p class="news-meta">2026-11-06 · 大麦网</p>
+            <p>早鸟票3分钟售罄，正式开票时间未公布，二手平台加价600元转卖。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 10. 相关推荐 -->
+      <section class="section" id="reco" aria-labelledby="reco-title">
+        <div class="section-head">
+          <h2 id="reco-title">相关推荐</h2>
+        </div>
+        <div class="reco-tags">
+          <a href="/#deep-dive">番位条款怎么看</a>
+          <a href="/#deep-dive">综艺剪辑顺序</a>
+          <a href="/#deep-dive">短剧融梗判断</a>
+          <a href="/#guide">吃瓜信息层级</a>
+          <a href="/#faq">阿那亚志愿者</a>
+          <a href="/#faq">草莓音乐节开票</a>
+          <a href="/#news">那英工作室声明</a>
+          <a href="/#news">阿沁掉粉数据</a>
+        </div>
+      </section>
+
+      <!-- 11. 补充板块：热门榜单 + 投稿互动 -->
+      <section class="section" id="rank" aria-labelledby="rank-title">
+        <div class="section-head">
+          <h2 id="rank-title">本周热门条目榜</h2>
+        </div>
+        <div class="rank-list">
+          <div class="rank-item"><span class="rank-num">1</span><span class="rank-title">《小巷人家2》片场路透与番位排序</span><span class="rank-hot">98.2万</span></div>
+          <div class="rank-item"><span class="rank-num">2</span><span class="rank-title">短剧《闪婚后大叔每天狂宠我》融梗争议</span><span class="rank-hot">91.7万</span></div>
+          <div class="rank-item"><span class="rank-num">3</span><span class="rank-title">《花儿与少年·好友季》冰岛站剪辑分歧</span><span class="rank-hot">76.4万</span></div>
+          <div class="rank-item"><span class="rank-num">4</span><span class="rank-title">阿沁与花西子解约及分成条款</span><span class="rank-hot">62.1万</span></div>
+          <div class="rank-item"><span class="rank-num">5</span><span class="rank-title">草莓音乐节2026广州站阵容公布</span><span class="rank-hot">55.3万</span></div>
+          <div class="rank-item"><span class="rank-num">6</span><span class="rank-title">阿那亚戏剧节志愿者名单更新</span><span class="rank-hot">34.8万</span></div>
+        </div>
+      </section>
+
+      <section class="section" id="submit" aria-labelledby="submit-title">
+        <div class="section-head">
+          <h2 id="submit-title">投稿与互动</h2>
+        </div>
+        <div class="overview" style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;">
+          <p style="flex:1;min-width:220px;margin:0;">拍到片场路透、整理出时间线对比图、或者发现哪个条目有新的官方回应，可以整理成帖投稿。每周选3—5条放进“最新动态”或“深度解析”板块。投稿时请附上截图或原始链接，标注日期和来源平台。</p>
+          <a class="btn btn-primary" href="/#submit">整理素材投稿 →</a>
+        </div>
+      </section>
+    </main>
+
+    <!-- 右侧辅助栏 -->
+    <aside aria-label="辅助栏">
+      <div class="aside-widget">
+        <h3>今日更新条目</h3>
+        <ul class="mini-list">
+          <li><a href="/#latest-updates">《小巷人家2》通告单排序互换</a><span class="mini-date">09:42</span></li>
+          <li><a href="/#latest-updates">那英工作室声明</a><span class="mini-date">08:15</span></li>
+          <li><a href="/#latest-updates">阿沁掉粉1.8万</a><span class="mini-date">昨天</span></li>
+          <li><a href="/#latest-updates">《闪婚》商标注册</a><span class="mini-date">昨天</span></li>
+          <li><a href="/#latest-updates">阿那亚志愿者扩招</a><span class="mini-date">11月7日</span></li>
+        </ul>
+      </div>
+      <div class="aside-widget">
+        <h3>热词索引</h3>
+        <div class="reco-tags">
+          <a href="/#hot-now">番位</a><a href="/#hot-now">剪辑</a><a href="/#hot-now">融梗</a><a href="/#hot-now">解约</a><a href="/#hot-now">志愿者</a><a href="/#hot-now">早鸟票</a>
+        </div>
+      </div>
+      <div class="aside-widget">
+        <h3>信息层级说明</h3>
+        <p style="font-size:12.5px;color:var(--text-muted);line-height:1.6;">已公开事实：官方字幕、海报、声明原文。<br>媒体转述：娱乐号转述，需看是否附截图。<br>网友推测：豆瓣、微博评论，无信源。<br>条目判断优先引用前两级，后两级仅作参考。</p>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <div class="footer-brand">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#c53b2f"/><text x="20" y="27" text-anchor="middle" font-size="20" fill="#fff" font-family="sans-serif" font-weight="700">瓜</text></svg>
+        每日吃瓜 yandex
+      </div>
+      <p class="footer-desc">覆盖2026年10月8日至11月8日的内娱条目：剧集片场、综艺录制、短剧融梗、达人解约、音乐节阵容、戏剧节志愿者。每天更新条目进展与用户现场评论，按具体事件追踪信息层级。</p>
+    </div>
+    <div class="footer-col">
+      <h4>频道</h4>
+      <a href="/#hot-now">热榜</a>
+      <a href="/#latest-updates">最新动态</a>
+      <a href="/#category">分类</a>
+      <a href="/#deep-dive">深度解析</a>
+    </div>
+    <div class="footer-col">
+      <h4>互动</h4>
+      <a href="/#comments">用户评论</a>
+      <a href="/#faq">常见问答</a>
+      <a href="/#submit">投稿</a>
+    </div>
+    <div class="footer-col">
+      <h4>条目</h4>
+      <a href="/#news">相关资讯</a>
+      <a href="/#rank">热门榜单</a>
+      <a href="/#reco">相关推荐</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>内容为示例条目，日期截至2026年11月8日。页面由静态内容聚合生成。</span>
+    <span>每日吃瓜 yandex</span>
+  </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" aria-label="回到顶部">↑</button>
+
+<script>
+  (function() {
+    // 移动端菜单
+    var menuToggle = document.getElementById('menuToggle');
+    var header = document.getElementById('siteHeader');
+    var headerNav = document.getElementById('headerNav');
+    if (menuToggle && header) {
+      menuToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var open = header.classList.toggle('mobile-nav-open');
+        menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        menuToggle.textContent = open ? '✕' : '☰';
+      });
+      document.addEventListener('click', function(e) {
+        if (header.classList.contains('mobile-nav-open') && !header.contains(e.target)) {
+          header.classList.remove('mobile-nav-open');
+          menuToggle.setAttribute('aria-expanded', 'false');
+          menuToggle.textContent = '☰';
+        }
+      });
+      // 点击导航后收起
+      if (headerNav) {
+        headerNav.addEventListener('click', function(e) {
+          if (e.target.tagName === 'A' && header.classList.contains('mobile-nav-open')) {
+            header.classList.remove('mobile-nav-open');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            menuToggle.textContent = '☰';
+          }
+        });
+      }
+      // Esc 关闭
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && header.classList.contains('mobile-nav-open')) {
+          header.classList.remove('mobile-nav-open');
+          menuToggle.setAttribute('aria-expanded', 'false');
+          menuToggle.textContent = '☰';
+          menuToggle.focus();
+        }
+      });
+    }
+
+    // 回到顶部
+    var backBtn = document.getElementById('backToTop');
+    if (backBtn) {
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > window.innerHeight) {
+          backBtn.classList.add('show');
+        } else {
+          backBtn.classList.remove('show');
+        }
+      }, { passive: true });
+      backBtn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    // 侧栏高亮（简单滚动监听）
+    var sections = document.querySelectorAll('main section[id]');
+    var navLinks = document.querySelectorAll('.channel-nav a');
+    if (sections.length && navLinks.length) {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            var id = entry.target.id;
+            navLinks.forEach(function(link) {
+              link.classList.toggle('active', link.getAttribute('href') === '/#' + id);
+            });
+          }
+        });
+      }, { rootMargin: '-110px 0px -60% 0px', threshold: 0.1 });
+      sections.forEach(function(sec) { observer.observe(sec); });
+    }
+  })();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "每日吃瓜 yandex",
+  "description": "每日吃瓜 yandex 聚合娱乐热点、争议事件脉络、用户现场评论与相关资讯，追踪具体条目进展，适合关注内娱动态、短视频话题与网络热议的读者。",
+  "inLanguage": "zh-CN",
+  "about": {
+    "@type": "Thing",
+    "name": "娱乐热点与事件追踪"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "《小巷人家2》蒋欣和关晓彤到底谁是一番？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "目前没有官方答案。片尾字幕和官方海报均未发布，唯一流出的是11月5日通告单，上面蒋欣排在关晓彤前。通告单只是当天排班文件，不能作为番位依据。2025年《都市守望者》也出现过通告单顺序与片尾字幕不一致的情况。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "《花儿与少年·好友季》冰岛站那段视频是真的吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "站姐视频拍到的车辆调度分歧确实存在，时长1分23秒。那英工作室11月8日声明称“配合节目组统一安排”，未否认分歧本身。节目组11月6日声明称正片将呈现完整沟通记录，但未说明是否放出未剪辑版。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "短剧《闪婚后大叔每天狂宠我》算融梗吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "网友对比图显示第14集有三句台词结构与2024年《顾少的隐婚罪妻》相同。判断融梗通常看连续台词的结构重合度，而非单个词汇。制作方未放出剧本创作时间线，目前无法确认谁先谁后。DataEye热力榜上该剧仍以9.1热力值排第一。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "阿沁和花西子解约，分成条款到底改了什么？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "阿沁在11月2日直播中提到“保底比例从35%降到18%”，但没有展示合同原文。花西子方面未发布声明。小红书相关笔记5600篇，讨论集中在品牌与达人分成模式的变化，不是单次解约本身。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "阿那亚戏剧节志愿者报名还有机会吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "报名截止延至11月10日。11月7日官方更新名单显示327人入选，比2025年多41个名额，“剧目接待”组扩招20人。有效简历6803份，录取比约20.8:1。想报名的人还可以在截止前提交。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "草莓音乐节广州站早鸟票没抢到，后面还有票吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "早鸟票11月6日3分钟售罄，大麦网显示同时在线抢票人数超42万。按摩登天空往年节奏，正式开票通常在阵容公布后两周左右，具体日期未公布。二手平台已出现加价600元的转卖帖。"
+      }
+    }
+  ]
+}
+</script>
+</body>
+                                               </html>

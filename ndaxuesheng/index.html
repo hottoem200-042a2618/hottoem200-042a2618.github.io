@@ -1,0 +1,1332 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>女大学生的沙龙室在线观看 - 青春沙龙与校园话题聚合</title>
+  <meta name="description" content="女大学生的沙龙室在线观看，聚合校园沙龙、女生对谈、成长话题与青年文化观察，提供沙龙片段、深度解析、观众评论与近期动态，适合关注校园生活与女性表达的观众。">
+  <meta name="keywords" content="女大学生的沙龙室在线观看">
+  <style>
+    /* ---- 设计系统 ---- */
+    :root {
+      --clr-primary: #8B5E3C;
+      --clr-primary-light: #F2E6DC;
+      --clr-primary-dark: #5E3E28;
+      --clr-bg: #FCF9F6;
+      --clr-surface: #FFFFFF;
+      --clr-text-1: #2C241E;
+      --clr-text-2: #6B5A4E;
+      --clr-text-3: #9E8C7E;
+      --clr-border: #EADDD2;
+      --clr-accent: #C77D5B;
+      --clr-accent-soft: #F9F0E8;
+      --radius-card: 14px;
+      --radius-btn: 10px;
+      --radius-tag: 6px;
+      --radius-banner: 18px;
+      --shadow-1: 0 4px 12px rgba(60, 40, 25, 0.06);
+      --shadow-2: 0 10px 26px rgba(60, 40, 25, 0.12);
+      --font-sans: -apple-system, "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+      --max-w: 1360px;
+      --offset-top: 108px; /* 吸顶公告条 + 页头高度 */
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: var(--offset-top); }
+    body {
+      font-family: var(--font-sans);
+      background: var(--clr-bg);
+      color: var(--clr-text-1);
+      line-height: 1.7;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+    ul, ol { list-style: none; }
+
+    /* ---- 吸顶区 ---- */
+    .sticky-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(252, 249, 246, 0.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--clr-border);
+    }
+    .notice-bar {
+      background: var(--clr-primary-dark);
+      color: #F7EDE5;
+      font-size: 0.82rem;
+      padding: 7px 0;
+      overflow: hidden;
+    }
+    .notice-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .notice-brand {
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: #F7EDE5;
+      white-space: nowrap;
+    }
+    .notice-items {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .notice-items span { white-space: nowrap; }
+    .notice-items span::before {
+      content: "·";
+      margin-right: 8px;
+      color: #D9B99B;
+    }
+
+    .site-header {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      height: 64px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .brand svg { width: 34px; height: 34px; }
+    .brand-text {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--clr-primary-dark);
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+    }
+    .main-nav {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      flex: 1;
+    }
+    .main-nav a {
+      font-size: 0.88rem;
+      color: var(--clr-text-2);
+      padding: 6px 12px;
+      border-radius: var(--radius-tag);
+      transition: background 0.2s, color 0.2s;
+      white-space: nowrap;
+    }
+    .main-nav a:hover { background: var(--clr-primary-light); color: var(--clr-primary-dark); }
+    .header-actions { display: flex; gap: 10px; flex-shrink: 0; }
+    .btn-outline {
+      font-size: 0.84rem;
+      padding: 7px 16px;
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius-btn);
+      color: var(--clr-text-2);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--clr-primary); background: var(--clr-primary-light); }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      padding: 8px;
+      border-radius: var(--radius-tag);
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--clr-text-1);
+      border-radius: 2px;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+
+    /* ---- 首屏 ---- */
+    .hero {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 48px 24px 40px;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 48px;
+      align-items: center;
+    }
+    .hero-content h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--clr-primary-dark);
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+    .hero-desc {
+      font-size: 1.02rem;
+      color: var(--clr-text-2);
+      max-width: 560px;
+      margin-bottom: 24px;
+    }
+    .hero-cta {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--clr-primary);
+      color: #fff;
+      font-weight: 600;
+      padding: 12px 28px;
+      border-radius: var(--radius-btn);
+      font-size: 0.95rem;
+      transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+    .btn-primary:hover {
+      background: var(--clr-primary-dark);
+      box-shadow: var(--shadow-2);
+      transform: translateY(-2px);
+    }
+    .btn-ghost {
+      padding: 12px 24px;
+      border-radius: var(--radius-btn);
+      font-size: 0.95rem;
+      color: var(--clr-primary-dark);
+      border: 1.5px solid var(--clr-primary-light);
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .btn-ghost:hover { background: var(--clr-primary-light); border-color: var(--clr-primary); }
+
+    .hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero-visual svg {
+      width: 100%;
+      max-width: 380px;
+      height: auto;
+      filter: drop-shadow(0 16px 32px rgba(139, 94, 60, 0.15));
+    }
+
+    /* ---- 布局：三栏门户 ---- */
+    .portal-grid {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px 64px;
+      display: grid;
+      grid-template-columns: 180px 1fr 260px;
+      gap: 32px;
+      align-items: start;
+    }
+    .channel-sidebar {
+      position: sticky;
+      top: var(--offset-top);
+    }
+    .channel-sidebar h3 {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--clr-text-3);
+      margin-bottom: 14px;
+      font-weight: 600;
+    }
+    .channel-list li { margin-bottom: 4px; }
+    .channel-list a {
+      display: block;
+      padding: 8px 12px;
+      border-radius: var(--radius-tag);
+      font-size: 0.9rem;
+      color: var(--clr-text-2);
+      transition: background 0.2s, color 0.2s;
+    }
+    .channel-list a:hover, .channel-list a.active {
+      background: var(--clr-primary-light);
+      color: var(--clr-primary-dark);
+      font-weight: 600;
+    }
+
+    .main-content { min-width: 0; }
+    .aux-sidebar {
+      position: sticky;
+      top: var(--offset-top);
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    /* ---- 通用板块样式 ---- */
+    .section {
+      margin-bottom: 48px;
+      scroll-margin-top: var(--offset-top);
+    }
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--clr-primary-dark);
+      letter-spacing: -0.01em;
+    }
+    .section-sub {
+      font-size: 0.84rem;
+      color: var(--clr-text-3);
+    }
+    .card {
+      background: var(--clr-surface);
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+    .card:hover {
+      box-shadow: var(--shadow-2);
+      transform: translateY(-3px);
+    }
+    .card-body { padding: 18px 20px; }
+    .tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      padding: 2px 8px;
+      border-radius: var(--radius-tag);
+      background: var(--clr-accent-soft);
+      color: var(--clr-accent);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    /* 精选卡片网格 */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 18px;
+    }
+    .feature-card .card-img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      background: var(--clr-primary-light);
+    }
+    .feature-card .card-body { padding: 14px 16px; }
+    .feature-card h4 {
+      font-size: 0.94rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+    .feature-card .tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
+    .feature-card .desc {
+      font-size: 0.82rem;
+      color: var(--clr-text-2);
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+    .feature-meta {
+      display: flex;
+      gap: 14px;
+      font-size: 0.75rem;
+      color: var(--clr-text-3);
+    }
+
+    /* 紧凑列表 */
+    .compact-list li {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--clr-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .compact-list li:last-child { border-bottom: none; }
+    .compact-list .item-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--clr-text-1);
+    }
+    .compact-list .item-note {
+      font-size: 0.82rem;
+      color: var(--clr-text-3);
+    }
+    .compact-list .item-date {
+      font-size: 0.76rem;
+      color: var(--clr-text-3);
+      white-space: nowrap;
+    }
+
+    /* 分类入口网格 */
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    .category-item {
+      background: var(--clr-surface);
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius-card);
+      padding: 18px 14px;
+      text-align: center;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--clr-text-2);
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+      display: block;
+    }
+    .category-item:hover {
+      background: var(--clr-primary-light);
+      border-color: var(--clr-primary);
+      color: var(--clr-primary-dark);
+    }
+
+    /* 深度解析 */
+    .deep-dive h2 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: var(--clr-primary-dark);
+    }
+    .deep-dive h3 {
+      font-size: 1.08rem;
+      font-weight: 700;
+      margin: 28px 0 10px;
+      color: var(--clr-primary-dark);
+    }
+    .deep-dive p {
+      margin-bottom: 14px;
+      color: var(--clr-text-2);
+    }
+    .deep-dive ul {
+      list-style: disc;
+      padding-left: 22px;
+      margin-bottom: 16px;
+      color: var(--clr-text-2);
+    }
+    .deep-dive ul li { margin-bottom: 6px; }
+    .callout {
+      background: var(--clr-primary-light);
+      border-left: 4px solid var(--clr-primary);
+      padding: 16px 20px;
+      border-radius: 0 var(--radius-tag) var(--radius-tag) 0;
+      margin: 20px 0;
+      font-size: 0.9rem;
+      color: var(--clr-text-1);
+    }
+
+    /* FAQ */
+    .faq-item {
+      border-bottom: 1px solid var(--clr-border);
+      padding: 4px 0;
+    }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-item summary {
+      padding: 14px 0;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--clr-text-1);
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: "+";
+      font-size: 1.2rem;
+      color: var(--clr-primary);
+      transition: transform 0.2s;
+    }
+    .faq-item[open] summary::after { content: "−"; }
+    .faq-answer {
+      padding: 0 0 16px;
+      font-size: 0.9rem;
+      color: var(--clr-text-2);
+    }
+
+    /* 评论 */
+    .comment-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .comment-item {
+      background: var(--clr-surface);
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius-card);
+      padding: 14px 18px;
+    }
+    .comment-head {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+    .comment-nick {
+      font-weight: 600;
+      font-size: 0.88rem;
+      color: var(--clr-primary-dark);
+    }
+    .comment-time {
+      font-size: 0.74rem;
+      color: var(--clr-text-3);
+    }
+    .comment-text {
+      font-size: 0.88rem;
+      color: var(--clr-text-2);
+      line-height: 1.6;
+    }
+
+    /* 资讯列表 */
+    .news-list li {
+      padding: 16px 0;
+      border-bottom: 1px solid var(--clr-border);
+    }
+    .news-list li:last-child { border-bottom: none; }
+    .news-list h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .news-list .news-meta {
+      font-size: 0.76rem;
+      color: var(--clr-text-3);
+      margin-bottom: 4px;
+    }
+    .news-list p {
+      font-size: 0.84rem;
+      color: var(--clr-text-2);
+    }
+
+    /* 推荐标签 */
+    .rec-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .rec-tags a {
+      font-size: 0.82rem;
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: var(--clr-surface);
+      border: 1px solid var(--clr-border);
+      color: var(--clr-text-2);
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .rec-tags a:hover {
+      background: var(--clr-primary-light);
+      border-color: var(--clr-primary);
+    }
+
+    /* 右侧辅助 */
+    .side-card {
+      background: var(--clr-surface);
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius-card);
+      padding: 18px 20px;
+    }
+    .side-card h3 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--clr-primary-dark);
+    }
+    .side-news li {
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--clr-border);
+      font-size: 0.84rem;
+      color: var(--clr-text-2);
+    }
+    .side-news li:last-child { border-bottom: none; }
+
+    /* 页尾 */
+    .site-footer {
+      background: var(--clr-primary-dark);
+      color: #E8D9CC;
+      padding: 48px 24px 28px;
+      margin-top: 24px;
+    }
+    .footer-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+    }
+    .footer-brand {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .footer-desc {
+      font-size: 0.84rem;
+      line-height: 1.7;
+      color: #CBB6A6;
+      margin-bottom: 16px;
+    }
+    .footer-col h4 {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #B89E8B;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+    .footer-col a {
+      display: block;
+      font-size: 0.84rem;
+      padding: 4px 0;
+      color: #D9C9BC;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: #fff; }
+    .footer-bottom {
+      max-width: var(--max-w);
+      margin: 32px auto 0;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      font-size: 0.78rem;
+      color: #A88F7D;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    /* 返回顶部 */
+    .back-top {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--clr-primary);
+      color: #fff;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-2);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s, visibility 0.3s;
+      z-index: 200;
+    }
+    .back-top.show { opacity: 1; visibility: visible; }
+    .back-top:hover { background: var(--clr-primary-dark); }
+
+    /* 移动端菜单 */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 280px;
+      height: 100vh;
+      background: var(--clr-bg);
+      z-index: 300;
+      padding: 24px;
+      box-shadow: var(--shadow-2);
+      transform: translateX(-100%);
+      transition: transform 0.3s;
+      overflow-y: auto;
+    }
+    .mobile-menu.open { transform: translateX(0); }
+    .mobile-menu .close-btn {
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      display: block;
+      color: var(--clr-text-2);
+    }
+    .mobile-menu nav a {
+      display: block;
+      padding: 10px 0;
+      font-size: 0.95rem;
+      border-bottom: 1px solid var(--clr-border);
+    }
+    .menu-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 299;
+    }
+    .menu-overlay.show { display: block; }
+
+    /* 响应式 */
+    @media (max-width: 1024px) {
+      .portal-grid {
+        grid-template-columns: 1fr 260px;
+        gap: 28px;
+      }
+      .channel-sidebar { display: none; }
+      .hero { grid-template-columns: 1fr 300px; gap: 28px; }
+      .main-nav a { font-size: 0.82rem; padding: 5px 8px; }
+    }
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr; text-align: center; }
+      .hero-content h1 { font-size: 1.7rem; }
+      .hero-desc { margin: 0 auto 20px; }
+      .hero-cta { justify-content: center; }
+      .hero-visual { order: -1; }
+      .hero-visual svg { max-width: 260px; }
+      .main-nav { display: none; }
+      .hamburger { display: flex; }
+      .portal-grid { grid-template-columns: 1fr; }
+      .aux-sidebar { position: static; flex-direction: row; flex-wrap: wrap; }
+      .aux-sidebar .side-card { flex: 1 1 260px; }
+      .category-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 740px) {
+      .notice-inner { gap: 10px; font-size: 0.74rem; }
+      .notice-items { gap: 12px; }
+      .site-header { height: 56px; padding: 0 16px; }
+      .hero { padding: 28px 16px 24px; }
+      .portal-grid { padding: 0 16px 40px; }
+      .section { margin-bottom: 36px; }
+      .feature-grid { grid-template-columns: 1fr 1fr; }
+      .aux-sidebar { flex-direction: column; }
+      .footer-inner { grid-template-columns: 1fr; gap: 24px; }
+      .back-top { bottom: 18px; right: 18px; width: 40px; height: 40px; }
+    }
+    @media (max-width: 480px) {
+      .feature-grid { grid-template-columns: 1fr; }
+      .category-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<!-- 吸顶公告 + 页头 -->
+<div class="sticky-wrap">
+  <div class="notice-bar">
+    <div class="notice-inner">
+      <span class="notice-brand">女大学生的沙龙室</span>
+      <div class="notice-items">
+        <span>11月7日 · 第48期「独居第一年」上线</span>
+        <span>11月5日 · 观众投稿通道开启</span>
+        <span>11月3日 · 沙龙对谈「跨专业考研」回放更新</span>
+      </div>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <a href="/" class="brand" aria-label="女大学生的沙龙室首页">
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="4" y="6" width="32" height="28" rx="8" fill="#F2E6DC" stroke="#8B5E3C" stroke-width="1.6"/>
+        <circle cx="15" cy="17" r="3" fill="#C77D5B"/>
+        <circle cx="25" cy="17" r="3" fill="#C77D5B"/>
+        <path d="M13 25 Q20 31 27 25" stroke="#8B5E3C" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+        <rect x="16" y="3" width="8" height="4" rx="2" fill="#8B5E3C"/>
+      </svg>
+      <span class="brand-text">女大学生的沙龙室在线观看</span>
+    </a>
+    <nav class="main-nav" aria-label="主题导航">
+      <a href="/#overview">沙龙概览</a>
+      <a href="/#featured">精选对谈</a>
+      <a href="/#updates">最新更新</a>
+      <a href="/#categories">话题分类</a>
+      <a href="/#deep-dive">深度解析</a>
+      <a href="/#guide">观看指南</a>
+      <a href="/#faq">常见问答</a>
+      <a href="/#comments">观众评论</a>
+      <a href="/#news">相关资讯</a>
+      <a href="/#recommend">相关推荐</a>
+    </nav>
+    <div class="header-actions">
+      <a href="/#submit" class="btn-outline">投稿入口</a>
+    </div>
+    <button class="hamburger" id="hamburgerBtn" aria-label="打开菜单" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+</div>
+
+<!-- 移动端菜单 -->
+<div class="menu-overlay" id="menuOverlay"></div>
+<nav class="mobile-menu" id="mobileMenu" aria-label="移动端导航">
+  <button class="close-btn" id="closeMenuBtn" aria-label="关闭菜单">✕</button>
+  <a href="/#overview">沙龙概览</a>
+  <a href="/#featured">精选对谈</a>
+  <a href="/#updates">最新更新</a>
+  <a href="/#categories">话题分类</a>
+  <a href="/#deep-dive">深度解析</a>
+  <a href="/#guide">观看指南</a>
+  <a href="/#faq">常见问答</a>
+  <a href="/#comments">观众评论</a>
+  <a href="/#news">相关资讯</a>
+  <a href="/#recommend">相关推荐</a>
+  <a href="/#submit">投稿入口</a>
+</nav>
+
+<!-- 首屏 -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>女大学生的沙龙室在线观看</h1>
+    <p class="hero-desc">一档以女大学生为主角、聚焦校园与成长议题的对谈沙龙。每期围绕一个具体话题展开，从宿舍关系到考研抉择，从实习体验到女性友谊，保留即兴讨论的粗糙感与真实反应。</p>
+    <div class="hero-cta">
+      <a href="/#featured" class="btn-primary">浏览精选对谈</a>
+      <a href="/#updates" class="btn-ghost">查看最新更新</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <svg viewBox="0 0 380 280" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect x="20" y="30" width="340" height="220" rx="20" fill="#FFF6EE"/>
+      <rect x="20" y="30" width="340" height="220" rx="20" stroke="#EADDD2" stroke-width="1.5"/>
+      <circle cx="100" cy="100" r="30" fill="#F2E6DC"/>
+      <circle cx="100" cy="90" r="12" fill="#C77D5B"/>
+      <path d="M80 115 Q100 130 120 115" stroke="#8B5E3C" stroke-width="2" fill="none"/>
+      <circle cx="190" cy="95" r="28" fill="#F2E6DC"/>
+      <circle cx="190" cy="86" r="11" fill="#C77D5B"/>
+      <path d="M172 108 Q190 122 208 108" stroke="#8B5E3C" stroke-width="2" fill="none"/>
+      <circle cx="280" cy="100" r="30" fill="#F2E6DC"/>
+      <circle cx="280" cy="90" r="12" fill="#C77D5B"/>
+      <path d="M260 115 Q280 130 300 115" stroke="#8B5E3C" stroke-width="2" fill="none"/>
+      <rect x="70" y="160" width="240" height="16" rx="8" fill="#EADDD2"/>
+      <rect x="100" y="188" width="180" height="12" rx="6" fill="#EADDD2" opacity="0.6"/>
+      <rect x="130" y="210" width="120" height="10" rx="5" fill="#EADDD2" opacity="0.4"/>
+      <circle cx="330" cy="50" r="8" fill="#C77D5B" opacity="0.25"/>
+      <circle cx="50" cy="220" r="12" fill="#C77D5B" opacity="0.15"/>
+    </svg>
+  </div>
+</section>
+
+<!-- 三栏门户主内容 -->
+<div class="portal-grid">
+  <!-- 左侧频道 -->
+  <aside class="channel-sidebar" aria-label="频道索引">
+    <h3>频道索引</h3>
+    <ul class="channel-list">
+      <li><a href="/#overview">沙龙概览</a></li>
+      <li><a href="/#featured">精选对谈</a></li>
+      <li><a href="/#updates">最新更新</a></li>
+      <li><a href="/#categories">话题分类</a></li>
+      <li><a href="/#deep-dive">深度解析</a></li>
+      <li><a href="/#guide">观看指南</a></li>
+      <li><a href="/#faq">常见问答</a></li>
+      <li><a href="/#comments">观众评论</a></li>
+      <li><a href="/#news">相关资讯</a></li>
+      <li><a href="/#recommend">相关推荐</a></li>
+      <li><a href="/#submit">投稿互动</a></li>
+    </ul>
+  </aside>
+
+  <!-- 中主内容 -->
+  <main class="main-content">
+
+    <!-- 1. 主题领域概览 -->
+    <section class="section" id="overview">
+      <div class="section-header">
+        <h2 class="section-title">沙龙议题与内容方向</h2>
+        <span class="section-sub">2026年11月更新</span>
+      </div>
+      <div style="font-size:0.94rem;color:var(--clr-text-2);line-height:1.8;">
+        <p style="margin-bottom:14px;">女大学生的沙龙室是一档以在校女生为主角、围绕校园生活与青年阶段具体问题展开的对谈节目。每期由3到5位不同学校、不同专业的女生围坐，就一个话题切入，保留现场讨论的停顿、分歧和笑场。话题覆盖学业选择（转专业、跨考、保研边缘）、日常生活（宿舍关系、独居适应、消费习惯）、情感与社交（女性友谊、恋爱观、家庭沟通）以及职场初体验（实习踩坑、第一份工作、考公与进企业的比较）。</p>
+        <p style="margin-bottom:14px;">近期内容值得关注的方向：第46期「跨专业考研值不值」请到两位从工科转新传的女生，用具体时间线和报录数据复盘；第44期「和室友冷战三个月」记录了一次真实的冲突与修复过程，弹幕里出现大量类似经历。11月7日上线的第48期「独居第一年」讨论租房预算、安全感和孤独感的处理，适合正在或准备独自生活的学生参考。</p>
+        <p>沙龙不追求结论统一，每期结尾会留出十分钟让参与者补充没说完的话，这部分往往比正片更直接。</p>
+      </div>
+    </section>
+
+    <!-- 2. 精选内容推荐 -->
+    <section class="section" id="featured">
+      <div class="section-header">
+        <h2 class="section-title">精选对谈片段</h2>
+        <span class="section-sub">按话题类型筛选</span>
+      </div>
+      <div class="feature-grid">
+        <article class="card feature-card">
+          <img src="https://picsum.photos/seed/salon-kayan/400/300" alt="跨专业考研对谈现场" width="400" height="300" loading="lazy" style="object-fit:cover;">
+          <div class="card-body">
+            <h4>跨专业考研值不值：工科转新传的两年</h4>
+            <div class="tags"><span class="tag">考研</span><span class="tag">跨专业</span><span class="tag">学业规划</span></div>
+            <p class="desc">两位女生拿出备考时间表和报录比，对比本专业与跨考的复习成本。提到新传实务题的手感需要三个月以上的持续练习，不能只靠背书。</p>
+            <div class="feature-meta"><span>热度 982</span><span>11-03 上线</span></div>
+          </div>
+        </article>
+        <article class="card feature-card">
+          <img src="https://picsum.photos/seed/salon-duju/400/300" alt="独居生活对谈场景" width="400" height="300" loading="lazy" style="object-fit:cover;">
+          <div class="card-body">
+            <h4>独居第一年：房租、安全和深夜外卖</h4>
+            <div class="tags"><span class="tag">独居</span><span class="tag">租房</span><span class="tag">生活成本</span></div>
+            <p class="desc">三位嘉宾分别住在城中村、老小区和合租房，聊到预算分配、门锁更换和周末怎么避免一整天不出门。有人坦言前三个月靠视频通话撑过来。</p>
+            <div class="feature-meta"><span>热度 1240</span><span>11-07 上线</span></div>
+          </div>
+        </article>
+        <article class="card feature-card">
+          <img src="https://picsum.photos/seed/salon-shiyou/400/300" alt="宿舍关系讨论现场" width="400" height="300" loading="lazy" style="object-fit:cover;">
+          <div class="card-body">
+            <h4>和室友冷战三个月之后</h4>
+            <div class="tags"><span class="tag">宿舍关系</span><span class="tag">人际冲突</span><span class="tag">沟通</span></div>
+            <p class="desc">当事人还原了一次因作息和卫生引发的冷战，从互不搭理到重新说话用了一个学期。在场其他人分享了各自宿舍的约定俗成，比如几点后不打电话。</p>
+            <div class="feature-meta"><span>热度 876</span><span>10-28 上线</span></div>
+          </div>
+        </article>
+        <article class="card feature-card">
+          <img src="https://picsum.photos/seed/salon-shixi/400/300" alt="实习经历分享对谈" width="400" height="300" loading="lazy" style="object-fit:cover;">
+          <div class="card-body">
+            <h4>第一份实习踩过的三个坑</h4>
+            <div class="tags"><span class="tag">实习</span><span class="tag">职场初体验</span><span class="tag">避坑</span></div>
+            <p class="desc">从简历虚写到到岗后没人带，三位女生复盘了实习中真实遇到的困难。其中一位在入职第二周被安排做完全没接触过的数据报表，靠B站教程硬撑下来。</p>
+            <div class="feature-meta"><span>热度 653</span><span>10-24 上线</span></div>
+          </div>
+        </article>
+        <article class="card feature-card">
+          <img src="https://picsum.photos/seed/salon-youyi/400/300" alt="女性友谊对谈" width="400" height="300" loading="lazy" style="object-fit:cover;">
+          <div class="card-body">
+            <h4>女生之间的友谊怎么维持</h4>
+            <div class="tags"><span class="tag">女性友谊</span><span class="tag">社交</span><span class="tag">情感</span></div>
+            <p class="desc">聊到毕业后的异地友谊、朋友圈互动和借钱这件事。有人提出朋友之间不要合伙做生意，也有嘉宾认为要看具体项目和分工。</p>
+            <div class="feature-meta"><span>热度 721</span><span>10-19 上线</span></div>
+          </div>
+        </article>
+        <article class="card feature-card">
+          <img src="https://picsum.photos/seed/salon-kaogong/400/300" alt="考公与就业选择讨论" width="400" height="300" loading="lazy" style="object-fit:cover;">
+          <div class="card-body">
+            <h4>考公还是进企业：大四女生的选择表</h4>
+            <div class="tags"><span class="tag">考公</span><span class="tag">就业</span><span class="tag">大四</span></div>
+            <p class="desc">两位嘉宾分别拿到国企offer和省考面试资格，用表格对比了薪资、加班频率和备考投入。结论是选择本身没有对错，但要知道自己最不能接受什么。</p>
+            <div class="feature-meta"><span>热度 1105</span><span>10-15 上线</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 3. 最新更新 -->
+    <section class="section" id="updates">
+      <div class="section-header">
+        <h2 class="section-title">近期更新与上线</h2>
+        <span class="section-sub">最近30天</span>
+      </div>
+      <ul class="compact-list">
+        <li><span class="item-name">第48期「独居第一年：房租、安全和深夜外卖」</span><span class="item-note">嘉宾：小钟、阿禾、陈陈</span><span class="item-date">11-07</span></li>
+        <li><span class="item-name">第47期「和导师相处的边界感」</span><span class="item-note">讨论邮件礼仪、组会发言和论文署名</span><span class="item-date">11-01</span></li>
+        <li><span class="item-name">第46期「跨专业考研值不值」</span><span class="item-note">含备考时间表与报录比对照</span><span class="item-date">10-27</span></li>
+        <li><span class="item-name">第45期「女生宿舍的卫生公约」</span><span class="item-note">现场拟定了一份可执行的排班表</span><span class="item-date">10-22</span></li>
+        <li><span class="item-name">第44期「和室友冷战三个月之后」</span><span class="item-note">当事人复盘冲突全过程</span><span class="item-date">10-18</span></li>
+        <li><span class="item-name">第43期「第一份实习踩过的三个坑」</span><span class="item-note">简历包装、到岗无人带、背锅</span><span class="item-date">10-12</span></li>
+        <li><span class="item-name">第42期「考公还是进企业」</span><span class="item-note">两份offer的薪资与工时对比</span><span class="item-date">10-09</span></li>
+        <li><span class="item-name">第41期「女生之间的友谊怎么维持」</span><span class="item-note">异地、借钱、合伙三个场景</span><span class="item-date">10-05</span></li>
+      </ul>
+    </section>
+
+    <!-- 4. 分类入口 -->
+    <section class="section" id="categories">
+      <div class="section-header">
+        <h2 class="section-title">按话题查找对谈</h2>
+        <span class="section-sub">8个分类</span>
+      </div>
+      <div class="category-grid">
+        <a href="/#featured" class="category-item">考研与升学</a>
+        <a href="/#featured" class="category-item">宿舍关系</a>
+        <a href="/#featured" class="category-item">独居生活</a>
+        <a href="/#featured" class="category-item">实习与求职</a>
+        <a href="/#featured" class="category-item">女性友谊</a>
+        <a href="/#featured" class="category-item">家庭沟通</a>
+        <a href="/#featured" class="category-item">消费与理财</a>
+        <a href="/#featured" class="category-item">情绪与心理</a>
+      </div>
+    </section>
+
+    <!-- 5. 深度解析 -->
+    <section class="section deep-dive" id="deep-dive">
+      <h2>沙龙对谈的判断维度：哪些讨论值得追下去</h2>
+
+      <h3>一、看嘉宾是否带着具体经历来</h3>
+      <p>第46期「跨专业考研值不值」之所以被反复回看，不是因为结论多正确，而是两位嘉宾拿出了可核对的东西：小钟展示了2024年3月到12月的每日复习记录，专业课背诵部分从每天2小时增加到5小时；阿禾贴出了两所学校新传专硕的报录比，分别是8.3:1和11.6:1。这些数字让讨论有了锚点，观众能对照自己的情况判断。</p>
+      <p>反过来，如果一期节目里嘉宾只讲“我觉得跨考挺难的”“看个人情况”，没有时间、分数、学校名或具体决策节点，那这期的信息密度就低。判断标准很简单：暂停播放，能不能从对话里捞出至少三个可查证的名词或数字。</p>
+
+      <h3>二、分歧比共识更有参考价值</h3>
+      <p>第44期「和室友冷战三个月」里，当事人认为冷战的起因是对方长期不扔垃圾，但另一位嘉宾指出，真正让关系卡住的是冷战期间两人在班级群里互相阴阳。同一件事出现了两种解释，观众各自认领。这种分歧不是节目没做好，恰恰是沙龙的价值——它把同一件事的不同切面摊开，不急着站队。</p>
+      <p>看的时候可以留意：嘉宾在哪个节点开始反驳对方，反驳时有没有给出自己经历里的具体例子。有例子的反驳比单纯说“我不这么认为”信息量大得多。</p>
+
+      <h3>三、时间线是否完整</h3>
+      <p>第45期「女生宿舍的卫生公约」现场拟了一份排班表，从周一到周日谁倒垃圾谁拖地，还规定了请假换班的流程。这份表能不能执行另说，但它提供了完整的时间安排。第43期「第一份实习踩过的三个坑」里，当事人把实习从投简历到离职的节点都列了出来：3月15日投递、3月22日面试、4月1日到岗、4月9日第一次独立做报表、5月20日离职。有了这条线，观众才能判断每个坑出现在什么阶段。</p>
+      <p>时间线模糊的对谈往往只剩情绪，听完记住的是“好惨”或“好爽”，对做决策帮助有限。</p>
+
+      <h3>四、区分事实、回应和推测</h3>
+      <p>第47期「和导师相处的边界感」涉及一个具体争议：学生该不该在晚上十点后回复导师消息。节目里出现了三种信息层：已公开事实是某高校研究生手册里没有明确规定回复时限；当事人回应是一位嘉宾说自己曾因未及时回复被导师在组会上点名；媒体转述部分引用了另一所学校的师生访谈，提到“紧急事务会电话通知”。这三层在节目里被分开表述，没有混在一起。</p>
+      <p>看这类讨论时，先标记每句话属于哪一层。事实可以查，回应可以等后续，推测只作参考。三层混着说的时候，判断就要打折扣。</p>
+
+      <div class="callout">
+        <strong>可核对的结构：</strong>第46期里，跨考新传的复习投入被拆成三个环节——专业课背诵（每天3-5小时，持续8个月）、实务练习（每周2篇评论，持续3个月）、模拟考（最后6周做了4套）。每个环节都有时长和频率，不是笼统说“很努力”。这种拆分方式可以直接套用到其他备考话题上。
+      </div>
+    </section>
+
+    <!-- 6. 体验指南 -->
+    <section class="section" id="guide">
+      <div class="section-header">
+        <h2 class="section-title">观看顺序与选择建议</h2>
+      </div>
+      <div style="font-size:0.94rem;color:var(--clr-text-2);line-height:1.8;">
+        <p style="margin-bottom:12px;">第一次打开沙龙室，建议从话题标签倒着选，而不是按上线时间顺序看。具体路径：先确定自己当下最关心的一个具体问题，比如“要不要跨考”“和室友闹矛盾怎么开口”“实习被安排做不会的事怎么办”，然后在分类入口里找对应话题，挑最近三个月内上线的节目。时间太早的讨论可能涉及的政策或环境已经变了。</p>
+        <p style="margin-bottom:12px;">判断一期值不值得投入四十分钟，可以看两个指标：嘉宾人数和议题具体程度。3人以上且议题里带具体场景词（比如“第一年”“三个月”“第一次”）的，通常讨论更充分。只有1到2人、标题又比较抽象的，可能偏向个人感受分享，信息密度会低一些。</p>
+        <p style="margin-bottom:12px;">同类话题如果有两期以上，优先看嘉宾学校或专业差异大的那期。比如宿舍关系有第44期和第45期，第44期当事人是四人寝，第45期嘉宾来自六人寝和二人寝，对照着看能覆盖更多情况。</p>
+        <p>看完一期如果对某个具体细节感兴趣，可以到评论区翻对应时间点的讨论，经常有人补充自己的经历或纠正嘉宾的说法。评论区里带具体学校名、专业名或时间节点的留言，参考价值高于纯情绪表达。</p>
+      </div>
+    </section>
+
+    <!-- 7. FAQ -->
+    <section class="section" id="faq">
+      <div class="section-header">
+        <h2 class="section-title">常见问题</h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>沙龙室的对谈有剧本吗？</summary>
+          <div class="faq-answer">每期会提前给嘉宾一个话题单和几个引导问题，但现场不逐字念稿。第46期里小钟说到一半翻手机找备考截图，阿禾打断她补充报录比，这些都不是事先安排的。后期剪辑会保留明显的停顿和笑场。</div>
+        </details>
+        <details class="faq-item">
+          <summary>嘉宾是怎么选出来的？</summary>
+          <div class="faq-answer">主要通过观众投稿和校园社群推荐。第44期的当事人是在评论区看到招募信息后报名的，第48期「独居第一年」的三位嘉宾分别来自三所不同学校，是通过各自学校的女生社群联系上的。选题确定后才会匹配嘉宾，不提前设定立场。</div>
+        </details>
+        <details class="faq-item">
+          <summary>为什么有的期数没有字幕？</summary>
+          <div class="faq-answer">前20期制作时没有配备字幕，第21期开始才加入人工校对字幕。早期内容目前在陆续补字幕，第12期、第15期已经补完，第7期和第9期还在处理中。没有字幕的期数在播放页有标注。</div>
+        </details>
+        <details class="faq-item">
+          <summary>沙龙室讨论过哪些具体学校的事情？</summary>
+          <div class="faq-answer">第47期提到过某高校研究生手册关于消息回复的规定，第43期实习话题里出现了两家具体公司的面试流程，第45期宿舍公约的排班表来自南方一所大学的六人寝。涉及具体单位时节目组会在后期加注说明，避免被当成对该单位的整体评价。</div>
+        </details>
+        <details class="faq-item">
+          <summary>可以自己投稿话题或者报名当嘉宾吗？</summary>
+          <div class="faq-answer">可以。投稿入口在页面页头和页尾都有链接，填写话题名称、个人经历简述和联系方式即可。第48期的嘉宾之一就是通过投稿通道报名的，从提交到录制用了三周。话题投稿不要求完整脚本，一句话说清想讨论什么就行。</div>
+        </details>
+        <details class="faq-item">
+          <summary>往期节目在哪里能集中看到？</summary>
+          <div class="faq-answer">最新更新板块按时间倒序列出了最近30天的期数，更早的内容可以按分类入口查找。每期节目页有对应的期数编号和上线日期，第48期之前的内容都在陆续整理归档，目前能回溯到第1期。</div>
+        </details>
+      </div>
+    </section>
+
+    <!-- 8. 用户评论 -->
+    <section class="section" id="comments">
+      <div class="section-header">
+        <h2 class="section-title">观众留言</h2>
+        <span class="section-sub">来自往期评论区</span>
+      </div>
+      <div class="comment-list">
+        <div class="comment-item"><div class="comment-head"><span class="comment-nick">今天也想早睡</span><span class="comment-time">11-07 23:14</span></div><p class="comment-text">第48期说到深夜外卖那段太真实了，我独居第二个月连吃了十一天同一家炒饭，不是多好吃，就是不想做选择。</p></div>
+        <div class="comment-item"><div class="comment-head"><span class="comment-nick">小钟的备忘录</span><span class="comment-time">11-07 21:02</span></div><p class="comment-text">跨考那期翻来覆去看了三遍。小钟的时间表跟我去年几乎一样，但我实务练习只做了两个月，确实不够。</p></div>
+        <div class="comment-item"><div class="comment-head"><span class="comment-nick">阿禾不是禾苗</span><span class="comment-time">11-06 18:40</span></div><p class="comment-text">听完第47期把导师消息提醒全关了，结果第二天错过组会改时间……边界感这东西还是要分人。</p></div>
+        <div class="comment-item"><div class="comment-head"><span class="comment-nick">六人寝编外人员</span><span class="comment-time">11-05 12:33</span></div><p class="comment-text">第45期那个排班表我们寝室照搬了，第三周就废了。倒垃圾还行，拖地根本没人认。公约得带惩罚条款才有用。</p></div>
+        <div class="comment-item"><div class="comment-head"><span class="comment-nick">陈陈</span><span class="comment-time">11-05 09:18</span></div><p class="comment-text">对谈里说的“前三个月靠视频通话撑过来”就是我本人。现在好点了，但周末还是会开一整天剧当背景音。</p></div>
+        <div class="comment-item"><div class="comment-head"><span class="comment-nick">跨考失败版</span><span class="comment-time">11-04 22:51</span></div><p class="comment-text">第46期报录比那部分能不能出个文字版？暂停截图太麻烦了。</p></div>
+        <div class="comment-item"><div class="comment-head"><span class="comment-nick">橘子汽水不加冰</span><span class="comment-time">11-03 16:07</span></div><p class="comment-text">宿舍冷战那期看到一半哭了。我们寝室现在就是谁也不理谁，但没人愿意先开口。</p></div>
+        <div class="comment-item"><div class="comment-head"><span class="comment-nick">实习三月半</span><span class="comment-time">11-02 10:45</span></div><p class="comment-text">第43期说的“没人带”太普遍了。我实习第一个星期就问了三次“这个怎么弄”，带教回我“你自己先想想”。</p></div>
+        <div class="comment-item"><div class="comment-head"><span class="comment-nick">南门租房户</span><span class="comment-time">11-01 20:26</span></div><p class="comment-text">独居那期居然没提怎么跟房东打交道，这才是最头疼的好吧。我光换锁就折腾了两周。</p></div>
+        <div class="comment-item"><div class="comment-head"><span class="comment-nick">沙拉不加酱</span><span class="comment-time">10-30 14:12</span></div><p class="comment-text">女性友谊那期聊借钱那块，我觉得嘉宾说得挺实在的，朋友之间借钱就是容易出事，不管关系多好。</p></div>
+        <div class="comment-item"><div class="comment-head"><span class="comment-nick">图书馆三楼常客</span><span class="comment-time">10-29 08:50</span></div><p class="comment-text">考公还是进企业那期看完了，我还是没想好。但至少知道要先把“最不能接受什么”列出来。</p></div>
+        <div class="comment-item"><div class="comment-head"><span class="comment-nick">一颗菜心</span><span class="comment-time">10-28 19:37</span></div><p class="comment-text">字幕什么时候补全啊，第9期没字幕看得我耳朵疼。</p></div>
+        <div class="comment-item"><div class="comment-head"><span class="comment-nick">研一在读</span><span class="comment-time">10-26 11:06</span></div><p class="comment-text">第46期说的“新传实务题要练三个月以上”是真的，我去年只练了一个月，考场上评论题写到一半不会写了。</p></div>
+        <div class="comment-item"><div class="comment-head"><span class="comment-nick">小卢不迷路</span><span class="comment-time">10-24 17:22</span></div><p class="comment-text">每期都追，最喜欢的是结尾十分钟的补充环节，比正片松弛，经常冒出金句。</p></div>
+        <div class="comment-item"><div class="comment-head"><span class="comment-nick">宿舍第六人</span><span class="comment-time">10-22 13:40</span></div><p class="comment-text">第44期那个班级群阴阳的事，我们寝室也干过，现在想想挺幼稚的。</p></div>
+        <div class="comment-item"><div class="comment-head"><span class="comment-nick">晚风</span><span class="comment-time">10-20 09:15</span></div><p class="comment-text">看了这么多期，感觉嘉宾带具体例子的时候节目就好看，纯聊感受的那几期容易走神。</p></div>
+      </div>
+    </section>
+
+    <!-- 9. 相关资讯 -->
+    <section class="section" id="news">
+      <div class="section-header">
+        <h2 class="section-title">相关资讯动态</h2>
+      </div>
+      <ul class="news-list">
+        <li>
+          <div class="news-meta">11-07 · 节目动态</div>
+          <h4>第48期「独居第一年」上线首日播放量破1.2万</h4>
+          <p>本期三位嘉宾分别来自广州、成都和长沙高校，讨论中提到的租房预算区间在每月800到2200元，评论区已有超200条独居经历分享。</p>
+        </li>
+        <li>
+          <div class="news-meta">11-05 · 互动通道</div>
+          <h4>第49期话题征集开启：聚焦“寒假回家第一周”</h4>
+          <p>投稿通道从11月5日开放至11月15日，要求提交一段150字以内的具体经历，入选者将参与11月下旬的录制。目前已收到47份投稿。</p>
+        </li>
+        <li>
+          <div class="news-meta">11-03 · 内容回顾</div>
+          <h4>「跨专业考研」对谈回放加注时间标记</h4>
+          <p>第46期新增了6个章节标记，包括“备考时间表”“报录比对照”“实务练习方法”等，方便按段落回看。该期目前累计播放量3.4万。</p>
+        </li>
+        <li>
+          <div class="news-meta">10-30 · 制作说明</div>
+          <h4>前20期字幕补全进度：已完成12期</h4>
+          <p>第12期、第15期字幕于10月29日上线，第7期和第9期仍在校对中，预计11月中旬完成。无字幕期数在播放页顶部有提示。</p>
+        </li>
+        <li>
+          <div class="news-meta">10-26 · 嘉宾回访</div>
+          <h4>第44期当事人更新近况：宿舍关系已缓和</h4>
+          <p>当事人在评论区补充，节目播出后室友主动找她聊了一次，两人现在约定每周轮换倒垃圾。这条留言获得340多个赞。</p>
+        </li>
+        <li>
+          <div class="news-meta">10-22 · 数据观察</div>
+          <h4>宿舍关系类对谈累计评论数最高，超过其他话题两倍</h4>
+          <p>第44期和第45期的评论区合计超过900条留言，其中带具体学校或寝室人数的留言占37%，明显高于考研类话题的21%。</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 10. 相关推荐 -->
+    <section class="section" id="recommend">
+      <div class="section-header">
+        <h2 class="section-title">相关话题推荐</h2>
+      </div>
+      <div class="rec-tags">
+        <a href="/#featured">跨专业考研时间表</a>
+        <a href="/#featured">独居租房避坑</a>
+        <a href="/#featured">宿舍排班表模板</a>
+        <a href="/#featured">实习没人带怎么办</a>
+        <a href="/#featured">女性友谊借钱</a>
+        <a href="/#featured">考公与秋招冲突</a>
+        <a href="/#featured">和导师发消息的边界</a>
+        <a href="/#featured">大四焦虑具体表现</a>
+      </div>
+    </section>
+
+    <!-- 11. 补充板块：投稿与互动 -->
+    <section class="section" id="submit">
+      <div class="section-header">
+        <h2 class="section-title">投稿与互动通道</h2>
+      </div>
+      <div style="background:var(--clr-surface);border:1px solid var(--clr-border);border-radius:var(--radius-card);padding:24px;">
+        <p style="font-size:0.94rem;color:var(--clr-text-2);margin-bottom:14px;">第49期话题「寒假回家第一周」正在征集中，截止11月15日。可以是回家第一天和父母的对话、被问成绩或恋爱的瞬间、或者你主动选择不回家过年的理由。写清楚时间、地点和具体说了什么就行，不用完整文章。</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="/#submit" class="btn-primary" style="font-size:0.88rem;padding:10px 22px;">提交话题投稿</a>
+          <a href="/#submit" class="btn-ghost" style="font-size:0.88rem;padding:10px 22px;">报名成为嘉宾</a>
+        </div>
+        <p style="font-size:0.8rem;color:var(--clr-text-3);margin-top:14px;">已收到47份投稿，其中寒假回家相关占31份。投稿后三个工作日内会收到选题组的反馈邮件。</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 右侧辅助 -->
+  <aside class="aux-sidebar" aria-label="辅助信息">
+    <div class="side-card">
+      <h3>近期热门对谈</h3>
+      <ul class="side-news">
+        <li>独居第一年：房租、安全和深夜外卖 <span style="color:var(--clr-text-3);font-size:0.72rem;">11-07</span></li>
+        <li>跨专业考研值不值：工科转新传的两年 <span style="color:var(--clr-text-3);font-size:0.72rem;">10-27</span></li>
+        <li>考公还是进企业：大四女生的选择表 <span style="color:var(--clr-text-3);font-size:0.72rem;">10-09</span></li>
+        <li>和室友冷战三个月之后 <span style="color:var(--clr-text-3);font-size:0.72rem;">10-18</span></li>
+        <li>女生之间的友谊怎么维持 <span style="color:var(--clr-text-3);font-size:0.72rem;">10-05</span></li>
+      </ul>
+    </div>
+    <div class="side-card">
+      <h3>沙龙室数据</h3>
+      <ul class="side-news">
+        <li>已上线期数：48期</li>
+        <li>最近更新：2026-11-07</li>
+        <li>累计话题分类：8类</li>
+        <li>本月投稿数：47份</li>
+      </ul>
+    </div>
+    <div class="side-card">
+      <h3>话题关键词</h3>
+      <div class="rec-tags" style="gap:6px;">
+        <a href="/#featured" style="font-size:0.76rem;padding:4px 10px;">考研</a>
+        <a href="/#featured" style="font-size:0.76rem;padding:4px 10px;">宿舍</a>
+        <a href="/#featured" style="font-size:0.76rem;padding:4px 10px;">独居</a>
+        <a href="/#featured" style="font-size:0.76rem;padding:4px 10px;">实习</a>
+        <a href="/#featured" style="font-size:0.76rem;padding:4px 10px;">友谊</a>
+        <a href="/#featured" style="font-size:0.76rem;padding:4px 10px;">考公</a>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<!-- 页尾 -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">女大学生的沙龙室在线观看</div>
+      <p class="footer-desc">覆盖2026年9月至11月的对谈内容，以在校女生围坐讨论为主要形式，每周更新一期。条目包括考研升学、宿舍关系、独居生活、实习求职、女性友谊等具体话题，保留现场讨论的停顿与分歧。</p>
+    </div>
+    <div class="footer-col">
+      <h4>内容分类</h4>
+      <a href="/#featured">考研与升学</a>
+      <a href="/#featured">宿舍关系</a>
+      <a href="/#featured">独居生活</a>
+      <a href="/#featured">实习与求职</a>
+    </div>
+    <div class="footer-col">
+      <h4>快速入口</h4>
+      <a href="/#updates">最新更新</a>
+      <a href="/#deep-dive">深度解析</a>
+      <a href="/#comments">观众评论</a>
+      <a href="/#news">相关资讯</a>
+    </div>
+    <div class="footer-col">
+      <h4>互动</h4>
+      <a href="/#submit">投稿话题</a>
+      <a href="/#submit">报名嘉宾</a>
+      <a href="/#faq">常见问题</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 女大学生的沙龙室 · 内容为示例聚合页</span>
+    <span>更新于 2026-11-08</span>
+  </div>
+</footer>
+
+<!-- 返回顶部 -->
+<button class="back-top" id="backTop" aria-label="返回顶部">↑</button>
+
+<script>
+  // 移动端菜单
+  const hamburger = document.getElementById('hamburgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const overlay = document.getElementById('menuOverlay');
+  const closeBtn = document.getElementById('closeMenuBtn');
+
+  function openMenu() {
+    mobileMenu.classList.add('open');
+    overlay.classList.add('show');
+    hamburger.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
+    mobileMenu.classList.remove('open');
+    overlay.classList.remove('show');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  hamburger.addEventListener('click', () => {
+    if (mobileMenu.classList.contains('open')) closeMenu();
+    else openMenu();
+  });
+  closeBtn.addEventListener('click', closeMenu);
+  overlay.addEventListener('click', closeMenu);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileMenu.classList.contains('open')) closeMenu();
+  });
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  // 返回顶部
+  const backTop = document.getElementById('backTop');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > window.innerHeight) backTop.classList.add('show');
+    else backTop.classList.remove('show');
+  });
+  backTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // 侧栏频道高亮
+  const sections = document.querySelectorAll('.section[id]');
+  const navLinks = document.querySelectorAll('.channel-list a');
+  if (navLinks.length) {
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(sec => {
+        const top = sec.offsetTop - 130;
+        if (window.scrollY >= top) current = sec.getAttribute('id');
+      });
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '/#' + current) link.classList.add('active');
+      });
+    });
+  }
+</script>
+
+<!-- 结构化数据 -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "女大学生的沙龙室在线观看",
+  "description": "聚合校园女生沙龙对谈、成长话题与青年文化观察，提供精选片段、深度解析、观众评论与近期资讯。",
+  "url": "https://example.com/salon",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://example.com/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "沙龙室的对谈有剧本吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "每期会提前给嘉宾一个话题单和几个引导问题，但现场不逐字念稿。第46期里小钟说到一半翻手机找备考截图，阿禾打断她补充报录比，这些都不是事先安排的。后期剪辑会保留明显的停顿和笑场。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "嘉宾是怎么选出来的？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "主要通过观众投稿和校园社群推荐。第44期的当事人是在评论区看到招募信息后报名的，第48期「独居第一年」的三位嘉宾分别来自三所不同学校，是通过各自学校的女生社群联系上的。选题确定后才会匹配嘉宾，不提前设定立场。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "为什么有的期数没有字幕？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "前20期制作时没有配备字幕，第21期开始才加入人工校对字幕。早期内容目前在陆续补字幕，第12期、第15期已经补完，第7期和第9期还在处理中。没有字幕的期数在播放页有标注。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "沙龙室讨论过哪些具体学校的事情？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "第47期提到过某高校研究生手册关于消息回复的规定，第43期实习话题里出现了两家具体公司的面试流程，第45期宿舍公约的排班表来自南方一所大学的六人寝。涉及具体单位时节目组会在后期加注说明，避免被当成对该单位的整体评价。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "可以自己投稿话题或者报名当嘉宾吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "可以。投稿入口在页面页头和页尾都有链接，填写话题名称、个人经历简述和联系方式即可。第48期的嘉宾之一就是通过投稿通道报名的，从提交到录制用了三周。话题投稿不要求完整脚本，一句话说清想讨论什么就行。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "往期节目在哪里能集中看到？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "最新更新板块按时间倒序列出了最近30天的期数，更早的内容可以按分类入口查找。每期节目页有对应的期数编号和上线日期，第48期之前的内容都在陆续整理归档，目前能回溯到第1期。"
+      }
+    }
+  ]
+}
+</script>
+
+</body>
+  </html>

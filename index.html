@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>狗爹与小桃 - 宠物生活内容站</title>
+  <meta name="description" content="狗爹与小桃，围绕宠物狗日常养护、行为训练、健康饮食与好物分享的内容聚合站。提供狗粮测评、训练技巧、常见病护理和网友真实养狗记录。">
+  <meta name="keywords" content="狗爹与小桃">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23d97706'/%3E%3Ctext x='50' y='68' font-size='50' text-anchor='middle' fill='white' font-family='sans-serif'%3E狗%3C/text%3E%3C/svg%3E">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #b45309;
+      --primary-light: #fef3c7;
+      --primary-dark: #92400e;
+      --bg: #fdfaf6;
+      --text-primary: #1e1b18;
+      --text-secondary: #57534e;
+      --text-tertiary: #a8a29e;
+      --border: #e7e5e4;
+      --card-bg: #ffffff;
+      --radius-card: 16px;
+      --radius-btn: 999px;
+      --radius-tag: 6px;
+      --shadow-default: 0 2px 12px rgba(0, 0, 0, 0.04);
+      --shadow-hover: 0 8px 24px rgba(180, 83, 9, 0.12);
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      --sticky-height: 100px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--sticky-height);
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text-primary);
+      line-height: 1.7;
+      padding-top: 0;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    a:hover { color: var(--primary-dark); }
+
+    /* 吸顶公告条 + 页头 */
+    .sticky-wrapper {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(253, 250, 246, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow 0.2s;
+    }
+    .sticky-wrapper.scrolled {
+      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    }
+
+    .announce-bar {
+      background: var(--primary-dark);
+      color: #fff;
+      font-size: 0.82rem;
+      padding: 6px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 20px;
+      align-items: center;
+      justify-content: center;
+      line-height: 1.5;
+    }
+    .announce-bar .brand-mark {
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: #fde68a;
+    }
+    .announce-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+    .announce-date {
+      background: rgba(255,255,255,0.15);
+      padding: 1px 8px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+    }
+
+    .header-main {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 24px;
+      max-width: 1320px;
+      margin: 0 auto;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .brand-area {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      background: var(--primary);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 1.4rem;
+      transition: transform 0.3s ease;
+    }
+    .brand-logo:hover { transform: rotate(-6deg) scale(1.02); }
+    .brand-name {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.3px;
+    }
+
+    .nav-main ul {
+      display: flex;
+      list-style: none;
+      gap: 4px;
+      flex-wrap: wrap;
+    }
+    .nav-main a {
+      display: block;
+      padding: 6px 12px;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      border-radius: var(--radius-btn);
+      font-weight: 500;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-main a:hover {
+      background: var(--primary-light);
+      color: var(--primary-dark);
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-btn);
+      padding: 2px 8px 2px 14px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .search-box:focus-within {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(180, 83, 9, 0.1);
+    }
+    .search-box input {
+      border: none;
+      outline: none;
+      background: transparent;
+      font-size: 0.85rem;
+      padding: 6px 0;
+      width: 130px;
+      color: var(--text-primary);
+      font-family: inherit;
+    }
+    .search-box input::placeholder { color: var(--text-tertiary); }
+    .search-box button {
+      background: var(--primary);
+      border: none;
+      color: white;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+    .search-box button:hover { background: var(--primary-dark); }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 6px 10px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: var(--text-primary);
+    }
+
+    /* 首屏 */
+    .hero {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 32px 24px 40px;
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .hero-content {
+      flex: 1 1 420px;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 3px 12px;
+      border-radius: var(--radius-btn);
+      letter-spacing: 0.3px;
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--text-primary);
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+    }
+    .hero-desc {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      max-width: 560px;
+      margin-bottom: 24px;
+      line-height: 1.7;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      padding: 10px 24px;
+      border-radius: var(--radius-btn);
+      font-weight: 600;
+      font-size: 0.9rem;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
+    .btn-secondary {
+      background: white;
+      color: var(--text-primary);
+      padding: 10px 24px;
+      border-radius: var(--radius-btn);
+      font-weight: 500;
+      font-size: 0.9rem;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-secondary:hover { border-color: var(--primary); background: var(--primary-light); }
+
+    .hero-visual {
+      flex: 1 1 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      min-height: 220px;
+    }
+    .hero-visual svg {
+      width: 100%;
+      max-width: 420px;
+      height: auto;
+    }
+
+    /* 主布局：双栏标准（左主内容 + 右辅助栏） */
+    .main-layout {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 24px 60px;
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 32px;
+      align-items: start;
+    }
+
+    .main-content {
+      min-width: 0;
+    }
+
+    .aside-right {
+      position: sticky;
+      top: calc(var(--sticky-height) + 16px);
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    /* 板块通用 */
+    .section {
+      margin-bottom: 48px;
+    }
+    .section:last-child { margin-bottom: 0; }
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.3px;
+    }
+    .section-more {
+      font-size: 0.85rem;
+      color: var(--primary);
+      font-weight: 500;
+    }
+
+    /* 卡片网格 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius-card);
+      padding: 20px;
+      box-shadow: var(--shadow-default);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.25s, transform 0.2s;
+    }
+    .card:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-2px);
+    }
+    .card-tag {
+      display: inline-block;
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 2px 10px;
+      border-radius: var(--radius-tag);
+      margin-bottom: 8px;
+      align-self: flex-start;
+    }
+    .card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+    .card-desc {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 12px;
+      flex: 1;
+    }
+    .card-meta {
+      display: flex;
+      gap: 12px;
+      font-size: 0.75rem;
+      color: var(--text-tertiary);
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .card-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .card-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .card-tags span {
+      background: #f5f5f4;
+      color: var(--text-secondary);
+      font-size: 0.7rem;
+      padding: 1px 8px;
+      border-radius: var(--radius-tag);
+    }
+
+    /* 列表 */
+    .list-compact {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .list-item {
+      display: flex;
+      gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: baseline;
+      flex-wrap: wrap;
+    }
+    .list-item:last-child { border-bottom: none; }
+    .list-index {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      min-width: 24px;
+    }
+    .list-text {
+      flex: 1;
+      font-size: 0.9rem;
+      color: var(--text-primary);
+    }
+    .list-text strong {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .list-desc {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      margin-top: 2px;
+      display: block;
+    }
+    .list-meta {
+      font-size: 0.75rem;
+      color: var(--text-tertiary);
+      white-space: nowrap;
+    }
+
+    /* 分类入口 */
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 12px;
+    }
+    .category-item {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-card);
+      padding: 16px 12px;
+      text-align: center;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      display: block;
+    }
+    .category-item:hover {
+      background: var(--primary-light);
+      border-color: var(--primary);
+      box-shadow: var(--shadow-hover);
+      color: var(--primary-dark);
+    }
+
+    /* 深度解析 */
+    .deep-dive {
+      background: var(--card-bg);
+      border-radius: var(--radius-card);
+      padding: 28px 32px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-default);
+    }
+    .deep-dive h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      letter-spacing: -0.3px;
+    }
+    .deep-dive h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin: 24px 0 10px;
+      color: var(--primary-dark);
+    }
+    .deep-dive p {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+    .deep-dive ul {
+      margin: 10px 0 16px 20px;
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+    .deep-dive ul li {
+      margin-bottom: 4px;
+    }
+    .deep-dive blockquote {
+      border-left: 3px solid var(--primary);
+      padding-left: 16px;
+      margin: 16px 0;
+      color: var(--text-secondary);
+      font-style: italic;
+      font-size: 0.9rem;
+    }
+
+    /* FAQ */
+    .faq-list details {
+      border-bottom: 1px solid var(--border);
+      padding: 12px 0;
+    }
+    .faq-list details:last-child { border-bottom: none; }
+    .faq-list summary {
+      font-weight: 600;
+      font-size: 0.92rem;
+      cursor: pointer;
+      color: var(--text-primary);
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 0;
+      transition: color 0.2s;
+    }
+    .faq-list summary:hover { color: var(--primary); }
+    .faq-list summary::before {
+      content: "▸";
+      font-size: 0.8rem;
+      color: var(--primary);
+      transition: transform 0.2s;
+    }
+    .faq-list details[open] summary::before {
+      transform: rotate(90deg);
+    }
+    .faq-list summary::-webkit-details-marker { display: none; }
+    .faq-answer {
+      padding: 8px 0 8px 20px;
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* 评论 */
+    .comment-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 14px;
+    }
+    .comment-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-card);
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      font-size: 0.85rem;
+      line-height: 1.6;
+      transition: box-shadow 0.2s;
+    }
+    .comment-card:hover { box-shadow: var(--shadow-hover); }
+    .comment-user {
+      font-weight: 600;
+      color: var(--primary-dark);
+      font-size: 0.8rem;
+      margin-bottom: 4px;
+    }
+    .comment-content {
+      color: var(--text-secondary);
+    }
+
+    /* 资讯 */
+    .news-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .news-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      background: var(--card-bg);
+      border-radius: var(--radius-card);
+      padding: 16px;
+      border: 1px solid var(--border);
+      transition: box-shadow 0.2s;
+      flex-wrap: wrap;
+    }
+    .news-item:hover { box-shadow: var(--shadow-hover); }
+    .news-date {
+      font-size: 0.75rem;
+      color: var(--text-tertiary);
+      white-space: nowrap;
+      min-width: 80px;
+    }
+    .news-content { flex: 1; }
+    .news-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+    .news-summary {
+      font-size: 0.83rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* 推荐标签 */
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag-item {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-btn);
+      padding: 5px 14px;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      transition: background 0.2s, border-color 0.2s;
+      cursor: pointer;
+    }
+    .tag-item:hover {
+      background: var(--primary-light);
+      border-color: var(--primary);
+      color: var(--primary-dark);
+    }
+
+    /* 侧栏 */
+    .aside-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-card);
+      padding: 18px 20px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-default);
+    }
+    .aside-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .aside-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .aside-list li {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      display: flex;
+      gap: 8px;
+      align-items: baseline;
+    }
+    .aside-list .rank {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 0.8rem;
+      min-width: 18px;
+    }
+
+    /* 页尾 */
+    .footer {
+      background: #1c1917;
+      color: #d6d3d1;
+      padding: 48px 24px 32px;
+      margin-top: 20px;
+    }
+    .footer-inner {
+      max-width: 1320px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 32px;
+    }
+    .footer-brand {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .footer-desc {
+      font-size: 0.85rem;
+      line-height: 1.7;
+      color: #a8a29e;
+      max-width: 320px;
+    }
+    .footer h4 {
+      color: #fff;
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+    .footer ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .footer ul li a {
+      color: #a8a29e;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+    .footer ul li a:hover { color: #fff; }
+    .footer-bottom {
+      max-width: 1320px;
+      margin: 32px auto 0;
+      padding-top: 20px;
+      border-top: 1px solid #292524;
+      font-size: 0.75rem;
+      color: #78716c;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    /* 回到顶部 */
+    .back-top {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(180, 83, 9, 0.3);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s, transform 0.2s;
+      z-index: 90;
+    }
+    .back-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .back-top:hover { transform: translateY(-3px); }
+
+    /* 遮罩 */
+    .overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.3);
+      z-index: 95;
+      backdrop-filter: blur(2px);
+    }
+    .overlay.active { display: block; }
+
+    /* 响应式 */
+    @media (max-width: 1024px) {
+      .main-layout {
+        grid-template-columns: 1fr;
+      }
+      .aside-right {
+        position: static;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+      .hero h1 { font-size: 2rem; }
+    }
+
+    @media (max-width: 740px) {
+      .header-main {
+        padding: 8px 16px;
+        justify-content: space-between;
+      }
+      .brand-name { font-size: 1rem; }
+      .nav-main {
+        display: none;
+        width: 100%;
+        order: 3;
+        padding: 8px 0;
+      }
+      .nav-main.open { display: block; }
+      .nav-main ul {
+        flex-direction: column;
+        gap: 2px;
+      }
+      .nav-main a {
+        padding: 10px 12px;
+        font-size: 0.95rem;
+      }
+      .hamburger { display: block; }
+      .header-actions { margin-left: auto; }
+      .search-box input { width: 90px; }
+      .hero { padding: 24px 16px 32px; gap: 24px; }
+      .hero h1 { font-size: 1.8rem; }
+      .main-layout { padding: 0 16px 40px; }
+      .aside-right {
+        grid-template-columns: 1fr;
+      }
+      .deep-dive { padding: 20px; }
+      .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .back-top { bottom: 16px; right: 16px; width: 40px; height: 40px; }
+      .comment-grid { grid-template-columns: 1fr; }
+      .announce-bar { font-size: 0.75rem; padding: 4px 12px; gap: 4px 12px; }
+    }
+
+    @media (max-width: 480px) {
+      .card-grid { grid-template-columns: 1fr; }
+      .category-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-actions { flex-direction: column; }
+      .btn-primary, .btn-secondary { justify-content: center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+      html { scroll-behavior: auto; }
+    }
+
+    /* 搜索无结果 */
+    .no-result {
+      display: none;
+      padding: 24px;
+      text-align: center;
+      color: var(--text-tertiary);
+      font-size: 0.9rem;
+    }
+    .no-result.show { display: block; }
+  </style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+  <!-- 吸顶公告条 + 页头 -->
+  <div class="sticky-wrapper" id="stickyWrapper">
+    <div class="announce-bar">
+      <span class="brand-mark">狗爹与小桃</span>
+      <span class="announce-item">
+        <span class="announce-date">11月7日</span>
+        <span>「2026冬季狗粮横评」上线，12款国产烘焙粮对比</span>
+      </span>
+      <span class="announce-item">
+        <span class="announce-date">11月5日</span>
+        <span>「小桃训练日记」第28集：分离焦虑脱敏实录</span>
+      </span>
+    </div>
+    <header>
+      <div class="header-main">
+        <div class="brand-area">
+          <div class="brand-logo" aria-hidden="true">狗</div>
+          <span class="brand-name">狗爹与小桃</span>
+        </div>
+        <nav class="nav-main" id="navMain" aria-label="主题导航">
+          <ul>
+            <li><a href="#section-overview">领域概览</a></li>
+            <li><a href="#section-featured">精选推荐</a></li>
+            <li><a href="#section-updates">最新动态</a></li>
+            <li><a href="#section-categories">分类</a></li>
+            <li><a href="#section-deep">深度解析</a></li>
+            <li><a href="#section-guide">体验指南</a></li>
+            <li><a href="#section-faq">问答</a></li>
+            <li><a href="#section-comments">评论</a></li>
+            <li><a href="#section-news">资讯</a></li>
+            <li><a href="#section-contribute">投稿</a></li>
+          </ul>
+        </nav>
+        <div class="header-actions">
+          <div class="search-box">
+            <input type="search" id="searchInput" placeholder="搜狗粮、训练、健康…" aria-label="站内搜索">
+            <button type="button" id="searchBtn" aria-label="搜索">🔍</button>
+          </div>
+          <button class="hamburger" id="hamburgerBtn" aria-label="打开菜单" aria-expanded="false">☰</button>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <!-- 遮罩 -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- 首屏 -->
+  <section class="hero">
+    <div class="hero-content">
+      <span class="hero-badge">🐕 养狗人的日常参考</span>
+      <h1>狗爹与小桃</h1>
+      <p class="hero-desc">聚焦宠物狗养护、行为训练、健康饮食与好物分享。这里汇集狗粮实测、训练方法、常见病护理和网友真实养狗记录，帮助养狗人做具体判断。</p>
+      <div class="hero-actions">
+        <a href="#section-featured" class="btn-primary">看精选内容 →</a>
+        <a href="#section-contribute" class="btn-secondary">📝 投稿分享</a>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="400" height="300" rx="24" fill="#fef3c7" opacity="0.5"/>
+        <circle cx="200" cy="150" r="110" fill="#fde68a" opacity="0.3"/>
+        <circle cx="200" cy="150" r="80" fill="#fcd34d" opacity="0.2"/>
+        <!-- 狗爪 -->
+        <ellipse cx="200" cy="170" rx="38" ry="30" fill="#b45309" opacity="0.85"/>
+        <circle cx="172" cy="135" r="14" fill="#b45309" opacity="0.85"/>
+        <circle cx="200" cy="125" r="14" fill="#b45309" opacity="0.85"/>
+        <circle cx="228" cy="135" r="14" fill="#b45309" opacity="0.85"/>
+        <circle cx="156" cy="155" r="12" fill="#b45309" opacity="0.7"/>
+        <circle cx="244" cy="155" r="12" fill="#b45309" opacity="0.7"/>
+        <!-- 小桃 -->
+        <circle cx="290" cy="100" r="16" fill="#fca5a5" opacity="0.9"/>
+        <circle cx="290" cy="96" r="6" fill="#f87171" opacity="0.7"/>
+        <path d="M275 110 Q290 125 305 110" stroke="#fca5a5" stroke-width="3" fill="none" opacity="0.8"/>
+        <!-- 点缀 -->
+        <circle cx="100" cy="80" r="4" fill="#b45309" opacity="0.3"/>
+        <circle cx="320" cy="200" r="5" fill="#b45309" opacity="0.2"/>
+        <circle cx="130" cy="220" r="3" fill="#f59e0b" opacity="0.4"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- 主布局：双栏（左主内容 + 右辅助栏） -->
+  <div class="main-layout">
+    <main class="main-content">
+
+      <!-- 1. 主题领域概览 -->
+      <section class="section" id="section-overview">
+        <div class="section-header">
+          <h2 class="section-title">养狗这件事，现在都在聊什么</h2>
+        </div>
+        <div style="background:var(--card-bg);border-radius:var(--radius-card);padding:24px 28px;border:1px solid var(--border);box-shadow:var(--shadow-default);">
+          <p style="font-size:0.92rem;color:var(--text-secondary);line-height:1.8;margin-bottom:12px;">宠物狗养护已经远不止“喂饱就行”。2026年养狗人讨论最多的方向集中在几个领域：主食粮的配方与代工透明度、行为训练中的正向强化与纠错边界、常见病（髌骨脱位、泪痕、胰腺炎）的早期识别，以及城市养犬的社交礼仪与法规。以狗粮为例，国产烘焙粮和低温烘焙工艺在2025—2026年快速铺开，但代工厂、鲜肉添加比例和检测报告成了争论焦点。</p>
+          <p style="font-size:0.92rem;color:var(--text-secondary);line-height:1.8;margin-bottom:12px;">训练方面，分离焦虑脱敏、随行训练和召回训练是搜索量最高的三个具体需求。小红书上“#狗狗分离焦虑”话题累计笔记超过18万篇，抖音相关视频播放量在2026年10月突破4.2亿次。健康方向上，狗狗泪痕的饮食调整和洗护配合被大量讨论，而髌骨脱位则因为小型犬饲养基数大，成为骨科就诊的常见原因。</p>
+          <p style="font-size:0.92rem;color:var(--text-secondary);line-height:1.8;">值得关注的具体内容还包括：2026年10月落地的《宠物饲料标签规范》修订版对原料表排序提出更明确要求，多个品牌因此更换包装；11月初多家国产粮品牌公布第三方检测报告，涉及粗蛋白、灰分和黄曲霉毒素B1三项指标。这些变化直接影响选购判断。</p>
+        </div>
+      </section>
+
+      <!-- 2. 精选内容推荐 -->
+      <section class="section" id="section-featured">
+        <div class="section-header">
+          <h2 class="section-title">精选内容推荐</h2>
+          <span class="section-more">共 8 条</span>
+        </div>
+        <div class="card-grid" id="cardGrid">
+          <article class="card">
+            <span class="card-tag">狗粮测评</span>
+            <h3 class="card-title">鲜朗烘焙粮 vs 网易严选冻干双拼</h3>
+            <div class="card-tags"><span>粗蛋白</span><span>代工厂</span><span>检测报告</span></div>
+            <p class="card-desc">两款国产烘焙粮的配方表对比：鲜朗鲜肉添加量标注78%，网易严选标注65%但附冻干粒。粗蛋白实测值分别为38.2%和36.5%，灰分差异明显。适合正在换粮的成犬。</p>
+            <div class="card-meta"><span>🔥 2.4k 浏览</span><span>⭐ 4.6</span><span>11月6日</span></div>
+          </article>
+          <article class="card">
+            <span class="card-tag">行为训练</span>
+            <h3 class="card-title">分离焦虑脱敏：从5分钟到2小时</h3>
+            <div class="card-tags"><span>脱敏</span><span>笼内训练</span><span>监控记录</span></div>
+            <p class="card-desc">小桃（柯基，2岁）的分离焦虑脱敏全过程记录。第1周只离开5分钟，第4周延长到45分钟，第6周稳定在2小时。关键在出门前不搞仪式感，回家后冷处理。</p>
+            <div class="card-meta"><span>🔥 3.1k 浏览</span><span>⭐ 4.9</span><span>11月5日</span></div>
+          </article>
+          <article class="card">
+            <span class="card-tag">健康护理</span>
+            <h3 class="card-title">狗狗泪痕：饮食调整+洗护清单</h3>
+            <div class="card-tags"><span>泪痕</span><span>低敏粮</span><span>洗眼液</span></div>
+            <p class="card-desc">比熊“豆豆”泪痕严重，换掉含鸡肉的粮后第3周开始变浅。配合每天两次生理盐水擦拭+每周一次洗眼液。注意：泪痕也可能来自倒睫或鼻泪管堵塞，先排除病理因素。</p>
+            <div class="card-meta"><span>🔥 1.8k 浏览</span><span>⭐ 4.4</span><span>11月3日</span></div>
+          </article>
+          <article class="card">
+            <span class="card-tag">好物分享</span>
+            <h3 class="card-title">200元以内狗窝横评：5款耐咬型</h3>
+            <div class="card-tags"><span>狗窝</span><span>耐咬</span><span>可拆洗</span></div>
+            <p class="card-desc">测试了5款售价150—200元的狗窝，从面料耐咬度、填充物回弹和拆洗便利性三个维度打分。最终“嬉皮狗”牛津布款得分最高，但内衬偏薄，需加垫子。</p>
+            <div class="card-meta"><span>🔥 1.2k 浏览</span><span>⭐ 4.2</span><span>11月2日</span></div>
+          </article>
+          <article class="card">
+            <span class="card-tag">训练技巧</span>
+            <h3 class="card-title">随行训练：不拽绳的3个阶段</h3>
+            <div class="card-tags"><span>随行</span><span>前肢牵引</span><span>奖励节奏</span></div>
+            <p class="card-desc">从室内无绳跟随到户外有干扰环境，分三个阶段训练。核心是奖励位置在左腿旁，而非伸到狗嘴边。每天练10分钟，两周后绳子明显松弛。</p>
+            <div class="card-meta"><span>🔥 2.7k 浏览</span><span>⭐ 4.7</span><span>10月30日</span></div>
+          </article>
+          <article class="card">
+            <span class="card-tag">饮食营养</span>
+            <h3 class="card-title">狗狗胰腺炎恢复期饮食记录</h3>
+            <div class="card-tags"><span>胰腺炎</span><span>低脂处方粮</span><span>血检指标</span></div>
+            <p class="card-desc">柯基“年糕”急性胰腺炎出院后第1—8周的饮食记录。处方粮+水煮鸡胸肉过渡，脂肪摄入控制在干物质8%以下。附第4周血检淀粉酶和脂肪酶数值对比。</p>
+            <div class="card-meta"><span>🔥 980 浏览</span><span>⭐ 4.8</span><span>10月28日</span></div>
+          </article>
+          <article class="card">
+            <span class="card-tag">行为训练</span>
+            <h3 class="card-title">召回训练总失败？先换高价值零食</h3>
+            <div class="card-tags"><span>召回</span><span>高价值奖励</span><span>长绳</span></div>
+            <p class="card-desc">用普通狗粮做召回奖励，狗跑回来的意愿很低。换成冻干鸡心后，5米内召回成功率从40%提升到90%。建议先在室内无干扰环境建立条件反射，再过渡到户外长绳。</p>
+            <div class="card-meta"><span>🔥 1.5k 浏览</span><span>⭐ 4.5</span><span>10月25日</span></div>
+          </article>
+          <article class="card">
+            <span class="card-tag">健康护理</span>
+            <h3 class="card-title">小型犬髌骨脱位：分级与保守护理</h3>
+            <div class="card-tags"><span>髌骨</span><span>小型犬</span><span>关节保健品</span></div>
+            <p class="card-desc">博美“团团”2岁时确诊髌骨脱位2级，兽医建议先保守护理。记录6个月的体重控制、避免跳跃和关节软骨素补充效果，附每次复查的触诊分级。</p>
+            <div class="card-meta"><span>🔥 1.1k 浏览</span><span>⭐ 4.6</span><span>10月22日</span></div>
+          </article>
+        </div>
+        <div class="no-result" id="noResult">没有找到相关内容，换个关键词试试。</div>
+      </section>
+
+      <!-- 3. 最新更新 / 动态 -->
+      <section class="section" id="section-updates">
+        <div class="section-header">
+          <h2 class="section-title">最新更新与热播</h2>
+          <span class="section-more">11月8日 更新</span>
+        </div>
+        <div class="list-compact">
+          <div class="list-item">
+            <span class="list-index">01</span>
+            <span class="list-text"><strong>「2026冬季狗粮横评」</strong>发布12款国产烘焙粮对比，粗蛋白最高42.1%<span class="list-desc">鲜朗、网易严选、高爷家、诚实一口等品牌参与，检测报告同步公开。</span></span>
+            <span class="list-meta">11月7日</span>
+          </div>
+          <div class="list-item">
+            <span class="list-index">02</span>
+            <span class="list-text"><strong>小桃训练日记第28集：分离焦虑脱敏</strong>更新至第6周<span class="list-desc">从5分钟到2小时，完整记录出门前中后的操作细节。</span></span>
+            <span class="list-meta">11月5日</span>
+          </div>
+          <div class="list-item">
+            <span class="list-index">03</span>
+            <span class="list-text"><strong>「狗狗泪痕饮食调整」</strong>新增比熊案例反馈<span class="list-desc">换粮3周后泪痕评分从3分降到1分（5分制），附评分标准。</span></span>
+            <span class="list-meta">11月3日</span>
+          </div>
+          <div class="list-item">
+            <span class="list-index">04</span>
+            <span class="list-text"><strong>《宠物饲料标签规范》修订版解读</strong>上线<span class="list-desc">原料表排序规则变化，肉粉与鲜肉标注方式有了更明确要求。</span></span>
+            <span class="list-meta">11月1日</span>
+          </div>
+          <div class="list-item">
+            <span class="list-index">05</span>
+            <span class="list-text"><strong>「200元以内狗窝横评」</strong>补充耐咬测试视频<span class="list-desc">5款狗窝经过10只中型犬72小时啃咬测试，2款出现破洞。</span></span>
+            <span class="list-meta">10月30日</span>
+          </div>
+          <div class="list-item">
+            <span class="list-index">06</span>
+            <span class="list-text"><strong>狗狗胰腺炎恢复期饮食记录</strong>更新第8周血检<span class="list-desc">淀粉酶降至正常范围上限，脂肪酶仍偏高，处方粮继续。</span></span>
+            <span class="list-meta">10月28日</span>
+          </div>
+          <div class="list-item">
+            <span class="list-index">07</span>
+            <span class="list-text"><strong>召回训练技巧：高价值零食替换实验</strong><span class="list-desc">冻干鸡心 vs 普通狗粮，5米召回成功率40%→90%。</span></span>
+            <span class="list-meta">10月25日</span>
+          </div>
+          <div class="list-item">
+            <span class="list-index">08</span>
+            <span class="list-text"><strong>小型犬髌骨脱位保守护理6个月跟踪</strong><span class="list-desc">博美团团从2级维持未加重，体重控制是关键。</span></span>
+            <span class="list-meta">10月22日</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. 分类入口 -->
+      <section class="section" id="section-categories">
+        <div class="section-header">
+          <h2 class="section-title">按内容方向浏览</h2>
+        </div>
+        <div class="category-grid">
+          <a href="#section-featured" class="category-item">狗粮测评</a>
+          <a href="#section-featured" class="category-item">行为训练</a>
+          <a href="#section-featured" class="category-item">健康护理</a>
+          <a href="#section-featured" class="category-item">好物分享</a>
+          <a href="#section-featured" class="category-item">饮食营养</a>
+          <a href="#section-featured" class="category-item">日常记录</a>
+          <a href="#section-featured" class="category-item">训练技巧</a>
+          <a href="#section-featured" class="category-item">疾病护理</a>
+        </div>
+      </section>
+
+      <!-- 5. 深度解析 -->
+      <section class="section" id="section-deep">
+        <div class="deep-dive">
+          <h2>国产烘焙粮的“鲜肉添加量”到底怎么读</h2>
+          <p>2026年国产烘焙粮的竞争焦点从“无谷”转向“鲜肉添加比例”。鲜朗标注78%鲜肉添加，网易严选标注65%鲜肉+冻干粒，高爷家则主打“全鲜肉零肉粉”。这些数字背后存在至少三个需要拆开看的变量：标注口径、检测方法与实际投料。2026年10月《宠物饲料标签规范》修订版要求原料表按投料量降序排列，但“鲜肉”定义仍以含水量75%左右为基准，与“肉粉”的换算关系没有统一公式。</p>
+
+          <h3>标注口径：鲜肉比例 ≠ 蛋白质含量</h3>
+          <p>鲜朗的78%鲜肉添加量指的是投料时鲜肉占配方总重的比例，经过高温烘焙脱水后，成品中鲜肉干物质占比会大幅下降。以鲜朗成犬烘焙粮为例，投料鲜肉78%，成品粗蛋白标注38%，实际检测值38.2%。网易严选双拼粮标注鲜肉65%，冻干粒单独添加，成品粗蛋白标注36%，实测36.5%。两组数据的差异不在鲜肉比例高低，而在配方中植物蛋白（如豌豆蛋白）的添加量。鲜朗配方表前三位为鲜鸡肉、鲜鸭肉、鲜鸡心；网易严选前三位为鲜鸡肉、冻干鸡肉粒、豌豆蛋白。</p>
+
+          <h3>检测报告要看哪几项</h3>
+          <p>2026年11月初多家品牌公开的第三方检测报告集中在三项指标：粗蛋白、灰分、黄曲霉毒素B1。粗蛋白反映蛋白质总量，灰分反映矿物质含量——灰分超过10%通常意味着骨粉或肉粉比例偏高。黄曲霉毒素B1是安全底线。以高爷家11月3日公布的报告为例，粗蛋白41.8%、灰分8.2%、黄曲霉毒素B1未检出（检出限0.5μg/kg）。诚实一口同期报告粗蛋白39.5%、灰分9.1%、黄曲霉毒素B1 0.3μg/kg。两组数据对比，高爷家在灰分控制上更优，但价格高出约30%。</p>
+
+          <h3>代工厂与品控的真实透明度</h3>
+          <p>国产烘焙粮的代工比例仍然较高。鲜朗自有工厂在山东，2025年投产；网易严选代工厂为山东汉欧；高爷家代工厂为山东乖宝。代工本身不意味着品质差，但品控稳定性依赖代工厂的批次管理。2026年9月，有用户在小红书发帖称某品牌不同批次狗粮颜色深浅不一，引发约200条讨论。品牌方回应称“烘焙温度波动导致”，并公布了两批次检测报告，粗蛋白差异在0.3%以内。这类事件的关键信息层级是：用户实拍（已公开事实）→品牌回应（当事人回应）→媒体报道（转述）→网友推测（未证实）。判断时优先看检测报告和批次号，而非单张照片。</p>
+
+          <h3>价格与品质的对应关系</h3>
+          <p>目前国产烘焙粮主流价格带在45—75元/斤。鲜朗约58元/斤，网易严选约52元/斤，高爷家约68元/斤，诚实一口约49元/斤。价格差异主要来自鲜肉采购成本和检测频次。高爷家宣称每批次送检，成本摊入售价；诚实一口为季度抽检。对于日常喂养，45—55元/斤区间已能满足成犬基本营养需求，65元以上更多是为“全鲜肉”和“批次检测”付费。没有证据表明更贵的粮能让健康犬更长寿，但胰腺炎恢复期或过敏体质的犬确实需要更谨慎的配方。</p>
+        </div>
+      </section>
+
+      <!-- 6. 体验指南 / 消费路径 -->
+      <section class="section" id="section-guide">
+        <div class="section-header">
+          <h2 class="section-title">养狗内容消费顺序建议</h2>
+        </div>
+        <div style="background:var(--card-bg);border-radius:var(--radius-card);padding:24px 28px;border:1px solid var(--border);box-shadow:var(--shadow-default);">
+          <p style="font-size:0.92rem;color:var(--text-secondary);line-height:1.8;margin-bottom:12px;"><strong>第一步：先看健康类内容，再考虑训练和好物。</strong>泪痕、髌骨、胰腺炎这类问题有明确的医学判断标准，先排除病理因素比换粮换窝更优先。比如泪痕，先确认有没有倒睫或鼻泪管堵塞，再谈饮食调整。</p>
+          <p style="font-size:0.92rem;color:var(--text-secondary);line-height:1.8;margin-bottom:12px;"><strong>第二步：判断一个条目值不值得花时间。</strong>看三个东西——有没有具体日期、有没有可核对的数字（检测值、训练时长、体重变化）、有没有对比对象。一篇只说“效果很好”的分享，信息量不如一篇记录“第3周从3分降到1分”的帖子。</p>
+          <p style="font-size:0.92rem;color:var(--text-secondary);line-height:1.8;margin-bottom:12px;"><strong>第三步：同类条目怎么比较。</strong>狗粮对比先看检测报告里的粗蛋白、灰分和黄曲霉毒素B1，再看配方表前三位。训练方法对比看奖励时机和干扰等级，而不是看“几天学会”的标题。</p>
+          <p style="font-size:0.92rem;color:var(--text-secondary);line-height:1.8;"><strong>第四步：把消费决策拉长到两周以上。</strong>换粮需要7—10天过渡，训练效果至少观察14天。用两周时间记录狗的实际反应（便便、泪痕、召回成功率），比看10篇速评更有效。</p>
+        </div>
+      </section>
+
+      <!-- 7. FAQ -->
+      <section class="section" id="section-faq">
+        <div class="section-header">
+          <h2 class="section-title">常见问题</h2>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>国产烘焙粮和膨化粮哪个更适合小型犬？</summary>
+            <div class="faq-answer">小型犬（如博美、泰迪）牙齿小、咀嚼力弱，膨化粮颗粒酥脆更容易咬碎。烘焙粮颗粒偏硬，部分小型犬会直接吞，反而增加噎住风险。如果选烘焙粮，建议选颗粒直径8mm以下的规格，或者用温水泡软。另外小型犬易发髌骨脱位，控制体重比选粮种类更关键。</div>
+          </details>
+          <details>
+            <summary>狗狗泪痕换粮多久能看到变化？</summary>
+            <div class="faq-answer">如果泪痕确实由食物过敏引起（常见过敏原为鸡肉、小麦、玉米），换粮后第2—3周开始变浅，完全消退通常需要4—6周。配合每天两次生理盐水擦拭。如果换粮6周没有改善，需要考虑倒睫、鼻泪管堵塞或耳道感染，建议做眼科检查。</div>
+          </details>
+          <details>
+            <summary>分离焦虑脱敏训练每天要练多久？</summary>
+            <div class="faq-answer">每次训练控制在5—15分钟，每天1—2次。核心是“离开时间从短到长”，从5秒开始，狗保持安静就返回奖励。不要超过狗的承受阈值——如果狗在你离开后立刻吠叫，说明时长设长了，退回上一个成功时长。训练期间出门不要搞仪式感，回家后冷处理5分钟。</div>
+          </details>
+          <details>
+            <summary>狗狗胰腺炎恢复期能吃普通粮吗？</summary>
+            <div class="faq-answer">急性胰腺炎出院后至少4—8周内需要低脂饮食，脂肪含量控制在干物质8%以下，通常需要处方粮。恢复期结束后能否换回普通粮取决于复查指标（淀粉酶、脂肪酶）和兽医评估。即使换回普通粮，也应选择脂肪含量12%以下的配方，并避免喂食人食和零食。</div>
+          </details>
+          <details>
+            <summary>随行训练总失败，狗一直拽绳子怎么办？</summary>
+            <div class="faq-answer">先检查奖励位置。大多数失败案例是因为奖励递到了狗嘴边，狗自然往前冲。正确做法是奖励出现在主人左腿旁，狗需要回头或侧身才能吃到。另外从室内无干扰环境开始，用高价值零食（冻干、肉粒）建立条件反射，再过渡到户外。每次训练不超过10分钟，狗一旦拽绳就停步等待，绳子松弛再前进。</div>
+          </details>
+          <details>
+            <summary>小型犬髌骨脱位2级必须手术吗？</summary>
+            <div class="faq-answer">2级髌骨脱位通常可以先保守护理，包括体重控制、避免跳跃（沙发、床、楼梯）、补充关节软骨素和定期复查。手术指征是：频繁滑出且无法自行复位、出现跛行或疼痛、保守护理6个月无改善。博美、泰迪、比熊等品种建议每半年触诊一次，早期干预效果更好。</div>
+          </details>
+        </div>
+      </section>
+
+      <!-- 8. 用户评论 -->
+      <section class="section" id="section-comments">
+        <div class="section-header">
+          <h2 class="section-title">养狗人怎么说</h2>
+        </div>
+        <div class="comment-grid">
+          <div class="comment-card"><div class="comment-user">@柯基年糕妈</div><div class="comment-content">鲜朗和网易严选都喂过，年糕吃鲜朗便便更成型，但价格差6块一斤，长期还是有点肉疼。</div></div>
+          <div class="comment-card"><div class="comment-user">@豆豆爸比</div><div class="comment-content">泪痕那个换粮真的有用，我家比熊换了低敏粮三周，泪痕从两条红印变成浅棕色了。不过洗眼液也天天用，不知道是哪个起效。</div></div>
+          <div class="comment-card"><div class="comment-user">@小桃是只柯基</div><div class="comment-content">分离焦虑脱敏第28集追完了，出门前不搞仪式感这条我试了，真的有效。以前说“妈妈走了”狗就哼唧，现在直接关门走，它反而不叫了。</div></div>
+          <div class="comment-card"><div class="comment-user">@阿福的铲屎官</div><div class="comment-content">狗窝横评那个嬉皮狗我买了，确实耐咬，但内衬太薄了，阿福睡了两天就开始扒拉垫子。后来加了条旧浴巾才消停。</div></div>
+          <div class="comment-card"><div class="comment-user">@三条腿的泰迪</div><div class="comment-content">髌骨脱位2级保守护理半年了，体重从6.2kg减到5.5kg，复查还是2级但没加重。医生说继续控制体重就行。</div></div>
+          <div class="comment-card"><div class="comment-user">@奶茶是只比熊</div><div class="comment-content">召回训练那个冻干鸡心真的比狗粮好使，我家奶茶在公园5米内叫回来概率从三成升到八成。就是冻干有点贵。</div></div>
+          <div class="comment-card"><div class="comment-user">@养狗新手小李</div><div class="comment-content">看完深度解析更懵了，所以到底买哪个牌子？</div></div>
+          <div class="comment-card"><div class="comment-user">@旺财他哥</div><div class="comment-content">胰腺炎那个记录太真实了。旺财去年也是胰腺炎，处方粮吃了三个月，现在好了但不敢喂人食了。</div></div>
+          <div class="comment-card"><div class="comment-user">@边牧不边</div><div class="comment-content">随行训练奖励位置那个点很关键，我之前一直把零食递到狗嘴边，它当然往前冲。改成左手放腿边之后，绳子松多了。</div></div>
+          <div class="comment-card"><div class="comment-user">@两只柯基的爹</div><div class="comment-content">国产粮现在真的卷，高爷家太贵了，我两只狗一个月要吃十几斤，喂不起。诚实一口性价比还行，就是灰分9.1%有点高。</div></div>
+          <div class="comment-card"><div class="comment-user">@芒果是只金毛</div><div class="comment-content">金毛泪痕少但掉毛多，有没有掉毛少点的粮推荐？</div></div>
+          <div class="comment-card"><div class="comment-user">@小鹿犬lulu</div><div class="comment-content">我家鹿犬髌骨1级，医生让控制体重+避免上下楼梯。现在抱着上下楼，狗倒是挺享受。</div></div>
+          <div class="comment-card"><div class="comment-user">@柯基屁股蛋</div><div class="comment-content">鲜朗78%鲜肉那个，我看了下配料表第四位是豌豆蛋白，所以粗蛋白38%也不能全算鲜肉的功劳吧。</div></div>
+          <div class="comment-card"><div class="comment-user">@狗爹与小桃老粉</div><div class="comment-content">从第1集追到第28集，小桃从爆冲到现在随行能走直线，真的肉眼可见进步。</div></div>
+          <div class="comment-card"><div class="comment-user">@汤圆是只博美</div><div class="comment-content">博美髌骨脱位+1，2级保守中。关节软骨素吃的是萨沙，感觉有用但说不好是不是心理作用。</div></div>
+          <div class="comment-card"><div class="comment-user">@大黄是只土狗</div><div class="comment-content">中华田园犬是不是不用这么讲究？我家大黄吃剩饭活了12年。</div></div>
+        </div>
+      </section>
+
+      <!-- 9. 相关资讯 -->
+      <section class="section" id="section-news">
+        <div class="section-header">
+          <h2 class="section-title">近期资讯</h2>
+        </div>
+        <div class="news-list">
+          <div class="news-item">
+            <span class="news-date">2026-11-07</span>
+            <div class="news-content">
+              <div class="news-title">《宠物饲料标签规范》修订版实施满月，多个国产粮品牌更换包装</div>
+              <div class="news-summary">新规要求原料表按投料量降序排列，鲜肉与肉粉标注方式更明确。截至11月7日，鲜朗、高爷家、诚实一口已完成包装更换，网易严选预计12月完成。</div>
+            </div>
+          </div>
+          <div class="news-item">
+            <span class="news-date">2026-11-05</span>
+            <div class="news-content">
+              <div class="news-title">国产烘焙粮11月检测报告集中公布：粗蛋白最高42.1%</div>
+              <div class="news-summary">鲜朗、高爷家、诚实一口、网易严选四家公布第三方检测数据。高爷家粗蛋白41.8%、灰分8.2%；鲜朗粗蛋白38.2%、灰分9.5%。黄曲霉毒素B1均未超标。</div>
+            </div>
+          </div>
+          <div class="news-item">
+            <span class="news-date">2026-11-03</span>
+            <div class="news-content">
+              <div class="news-title">小红书“狗狗分离焦虑”话题笔记突破18万篇</div>
+              <div class="news-summary">近30天新增约2.1万篇，其中带“脱敏”关键词的笔记互动量最高。柯基、泰迪、比熊三个品种的讨论占比超过六成。</div>
+            </div>
+          </div>
+          <div class="news-item">
+            <span class="news-date">2026-10-30</span>
+            <div class="news-content">
+              <div class="news-title">山东汉欧代工狗粮批次色差事件：品牌方公布两批次检测报告</div>
+              <div class="news-summary">用户实拍显示两批次狗粮颜色深浅不一，品牌方回应称烘焙温度波动导致，粗蛋白差异0.3%以内。代工厂表示已调整温控参数。</div>
+            </div>
+          </div>
+          <div class="news-item">
+            <span class="news-date">2026-10-26</span>
+            <div class="news-content">
+              <div class="news-title">2026中国宠物营养大会：鲜肉添加量标注将出台团体标准</div>
+              <div class="news-summary">中国饲料工业协会宠物饲料专业委员会透露，正在制定鲜肉添加量标注团体标准，预计2027年上半年发布。涉及鲜肉定义、检测方法和标注口径。</div>
+            </div>
+          </div>
+          <div class="news-item">
+            <span class="news-date">2026-10-22</span>
+            <div class="news-content">
+              <div class="news-title">小型犬髌骨脱位就诊量同比上升12%，体重控制被列为首要干预措施</div>
+              <div class="news-summary">据北京三家宠物医院2026年1—10月数据，髌骨脱位就诊量较2025年同期上升12%，博美、泰迪、比熊占比最高。兽医建议将体重控制在标准范围下限。</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 10. 相关推荐 -->
+      <section class="section" id="section-related">
+        <div class="section-header">
+          <h2 class="section-title">相关推荐</h2>
+        </div>
+        <div class="tag-cloud">
+          <a href="#section-featured" class="tag-item">鲜朗烘焙粮实测</a>
+          <a href="#section-featured" class="tag-item">网易严选冻干双拼</a>
+          <a href="#section-featured" class="tag-item">分离焦虑脱敏步骤</a>
+          <a href="#section-featured" class="tag-item">随行训练奖励位置</a>
+          <a href="#section-featured" class="tag-item">狗狗泪痕饮食调整</a>
+          <a href="#section-featured" class="tag-item">胰腺炎低脂处方粮</a>
+          <a href="#section-featured" class="tag-item">髌骨脱位保守护理</a>
+          <a href="#section-featured" class="tag-item">200元狗窝耐咬测试</a>
+        </div>
+      </section>
+
+      <!-- 11. 补充板块：热门榜单 + 投稿互动 -->
+      <section class="section" id="section-contribute">
+        <div class="section-header">
+          <h2 class="section-title">热门榜单 & 参与共建</h2>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;" class="contribute-grid">
+          <div class="aside-card">
+            <div class="aside-title">🔥 本周热门条目</div>
+            <ul class="aside-list">
+              <li><span class="rank">1</span> 鲜朗烘焙粮 vs 网易严选冻干双拼</li>
+              <li><span class="rank">2</span> 分离焦虑脱敏：从5分钟到2小时</li>
+              <li><span class="rank">3</span> 狗狗泪痕：饮食调整+洗护清单</li>
+              <li><span class="rank">4</span> 随行训练：不拽绳的3个阶段</li>
+              <li><span class="rank">5</span> 200元以内狗窝横评</li>
+              <li><span class="rank">6</span> 召回训练总失败？先换高价值零食</li>
+            </ul>
+          </div>
+          <div class="aside-card" style="display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:10px;">
+            <div class="aside-title">📝 分享你的养狗记录</div>
+            <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.6;">狗粮实测、训练日记、疾病护理经验都可以投稿。附上具体日期和可核对的数据，会更容易被推荐。</p>
+            <a href="#" class="btn-primary" style="padding:8px 20px;font-size:0.85rem;" onclick="alert('投稿功能为示例，实际使用请通过站内渠道提交。');return false;">我要投稿 →</a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- 右侧辅助栏 -->
+    <aside class="aside-right">
+      <div class="aside-card">
+        <div class="aside-title">📌 内容速览</div>
+        <ul class="aside-list">
+          <li><span class="rank">11/08</span> 冬季狗粮横评上线</li>
+          <li><span class="rank">11/07</span> 标签规范修订版解读</li>
+          <li><span class="rank">11/05</span> 分离焦虑脱敏第28集</li>
+          <li><span class="rank">11/03</span> 泪痕饮食调整反馈</li>
+          <li><span class="rank">10/30</span> 狗窝耐咬测试视频</li>
+        </ul>
+      </div>
+      <div class="aside-card">
+        <div class="aside-title">🔍 热门搜索词</div>
+        <div class="tag-cloud" style="gap:6px;">
+          <span class="tag-item" style="font-size:0.78rem;padding:3px 10px;">鲜朗</span>
+          <span class="tag-item" style="font-size:0.78rem;padding:3px 10px;">网易严选</span>
+          <span class="tag-item" style="font-size:0.78rem;padding:3px 10px;">分离焦虑</span>
+          <span class="tag-item" style="font-size:0.78rem;padding:3px 10px;">髌骨脱位</span>
+          <span class="tag-item" style="font-size:0.78rem;padding:3px 10px;">泪痕</span>
+          <span class="tag-item" style="font-size:0.78rem;padding:3px 10px;">随行训练</span>
+          <span class="tag-item" style="font-size:0.78rem;padding:3px 10px;">胰腺炎</span>
+          <span class="tag-item" style="font-size:0.78rem;padding:3px 10px;">召回训练</span>
+        </div>
+      </div>
+      <div class="aside-card">
+        <div class="aside-title">🐕 关于这里</div>
+        <p style="font-size:0.82rem;color:var(--text-secondary);line-height:1.7;">狗爹与小桃：记录一只柯基的日常训练、饮食和健康管理，顺带整理养狗路上踩过的坑。内容覆盖2025—2026年，以实测数据和长期跟踪为主。</p>
+      </div>
+    </aside>
+  </div>
+
+  <!-- 页尾 -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">狗爹与小桃</div>
+        <p class="footer-desc">从2025年3月到2026年11月，累计发布47篇狗粮测评、23篇训练记录和19篇健康护理笔记。所有数据来自实际喂养和第三方检测报告，更新频率每周2—3次。</p>
+      </div>
+      <div>
+        <h4>内容</h4>
+        <ul>
+          <li><a href="#section-featured">狗粮测评</a></li>
+          <li><a href="#section-featured">行为训练</a></li>
+          <li><a href="#section-featured">健康护理</a></li>
+          <li><a href="#section-featured">好物分享</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>参与</h4>
+        <ul>
+          <li><a href="#section-contribute">投稿分享</a></li>
+          <li><a href="#section-comments">用户评论</a></li>
+          <li><a href="#section-faq">常见问题</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>说明</h4>
+        <ul>
+          <li><a href="#section-overview">领域概览</a></li>
+          <li><a href="#section-deep">深度解析</a></li>
+          <li><a href="#section-guide">体验指南</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 狗爹与小桃 · 内容均为示例，不构成医疗建议</span>
+      <span>更新时间：2026年11月8日</span>
+    </div>
+  </footer>
+
+  <!-- 回到顶部 -->
+  <button class="back-top" id="backTop" aria-label="回到顶部">↑</button>
+
+  <script>
+    (function() {
+      // 吸顶阴影
+      const stickyWrapper = document.getElementById('stickyWrapper');
+      const backTop = document.getElementById('backTop');
+      let lastScrollY = 0;
+
+      window.addEventListener('scroll', function() {
+        const y = window.scrollY;
+        if (y > 10) {
+          stickyWrapper.classList.add('scrolled');
+        } else {
+          stickyWrapper.classList.remove('scrolled');
+        }
+        if (y > window.innerHeight) {
+          backTop.classList.add('visible');
+        } else {
+          backTop.classList.remove('visible');
+        }
+        lastScrollY = y;
+      }, { passive: true });
+
+      backTop.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // 移动端汉堡菜单
+      const hamburger = document.getElementById('hamburgerBtn');
+      const navMain = document.getElementById('navMain');
+      const overlay = document.getElementById('overlay');
+
+      function closeMenu() {
+        navMain.classList.remove('open');
+        overlay.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+      }
+
+      function openMenu() {
+        navMain.classList.add('open');
+        overlay.classList.add('active');
+        hamburger.setAttribute('aria-expanded', 'true');
+      }
+
+      hamburger.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (navMain.classList.contains('open')) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
+      });
+
+      overlay.addEventListener('click', closeMenu);
+
+      navMain.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          if (window.innerWidth <= 740) {
+            closeMenu();
+          }
+        });
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && navMain.classList.contains('open')) {
+          closeMenu();
+        }
+      });
+
+      // 搜索过滤
+      const searchInput = document.getElementById('searchInput');
+      const searchBtn = document.getElementById('searchBtn');
+      const cardGrid = document.getElementById('cardGrid');
+      const noResult = document.getElementById('noResult');
+      const cards = cardGrid ? Array.from(cardGrid.querySelectorAll('.card')) : [];
+
+      function performSearch() {
+        const query = (searchInput.value || '').trim().toLowerCase();
+        if (!cardGrid) return;
+        if (!query) {
+          cards.forEach(function(card) { card.style.display = ''; });
+          noResult.classList.remove('show');
+          return;
+        }
+        let found = 0;
+        cards.forEach(function(card) {
+          const text = card.textContent.toLowerCase();
+          if (text.includes(query)) {
+            card.style.display = '';
+            found++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+        if (found === 0) {
+          noResult.classList.add('show');
+        } else {
+          noResult.classList.remove('show');
+        }
+      }
+
+      if (searchBtn) {
+        searchBtn.addEventListener('click', performSearch);
+      }
+      if (searchInput) {
+        searchInput.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            performSearch();
+          }
+        });
+        searchInput.addEventListener('input', function() {
+          if (searchInput.value.trim() === '') {
+            performSearch();
+          }
+        });
+      }
+
+      // 平滑滚动偏移（已通过 CSS scroll-padding-top 处理，这里做兼容兜底）
+      document.querySelectorAll('a[href^="#section-"]').forEach(function(anchor) {
+        anchor.addEventListener('click', function(e) {
+          const targetId = this.getAttribute('href');
+          if (targetId && targetId.length > 1) {
+            const targetEl = document.querySelector(targetId);
+            if (targetEl) {
+              e.preventDefault();
+              const offset = stickyWrapper.offsetHeight;
+              const targetPosition = targetEl.getBoundingClientRect().top + window.scrollY - offset;
+              window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+            }
+          }
+        });
+      });
+
+    })();
+  </script>
+</body>
+                                                     </html>
